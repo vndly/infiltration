@@ -1,16 +1,12 @@
 8-bit style
 
 Super Time Force
+Rayman Legends
 Bro Force
 Aban Hawkins & 1000 Spikes
 Mercenary Kings
 Fez
 A.N.N.E
-
-Use RGB888 for background and ARGB888 for the rest of sprites
-
-Music:
-	* http://www.freesound.org/people/FoolBoyMedia/sounds/220754
 
 Actions:
 	* jump
@@ -22,6 +18,7 @@ Audio:
 	* Sound:
 		- http://www.superflashbros.net/as3sfxr
 		- http://www.freesound.org
+		- http://www.freesound.org/people/FoolBoyMedia/sounds/220754
 		
 	* Music:
 		- http://www.audiosauna.com/studio
@@ -32,8 +29,10 @@ Audio:
 The character has a level of health
 
 Story:
-	* Two monkeys live in the jungle. One day some guys steal the female monkey. Then the male monkey start to run
-	  to rescue her.
+	* A guy is trapped in his own dream. He has to pass all the levels in order to wake up. In total 10 levels with 10 sublevels each one.
+	  Each sublevel consists in walk from left to right and reach the portal that will take you to the next sublevel.
+	
+	* Two monkeys live in the jungle. One day some guys steal the female monkey. Then the male monkey start to run to rescue her.
 
 Enemies:
 	* fire on the ground
@@ -44,6 +43,21 @@ Enemies:
 	* aboriginal with bow and arrows
 	* rocks on the ground
 	* woods out of a tree
+	* rotating stuff
+	
+Levels:
+	* Cave
+	* Jungle
+	* Ice
+	* Underwater
+	* Lava
+	* Desert / Beach
+	* City
+	* Swamp
+	* Castle
+	* Moon
+	* Sewers
+	* Fantasy
 
 Items to catch:
 	* extra time
