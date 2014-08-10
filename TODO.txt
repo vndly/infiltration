@@ -1,18 +1,40 @@
 8-bit style
 
-Super Time Force
-Rayman Legends
-Bro Force
-Aban Hawkins & 1000 Spikes
-Mercenary Kings
-Fez
-A.N.N.E
+Games:
+	* Rayman
+		- Rayman Legends
+		- Rayman Origins
+	* Super Time Force
+	* Bro Force
+	* Aban Hawkins & 1000 Spikes
+	* Mercenary Kings
+	* Fez
+	* A.N.N.E
+	* Aegis defenders
+	* BattleBlock Theatre
+	* Stealth Inc. - A Clone in the Dark
+	* Super Meat Boy
+	* Kirby's Adventure 
+	* Yoshi's island
+	* Earthworm Jim
+	* Sonic
+		- Sonic & Knuckles
+	* Mario
+		- New Super Mario Bros
+		- Super Paper Mario
 
+Tisp:
+	* Have an animated background (like the leafs of the trees moving because of the wind)
+	* The sun is smiling and following you with his eyes
+	* Surround everything with a black thick silhouette (Doodle Jump)
+	* Storyline like Meganoid. You can't play the next sublevel until you finish the current one
+	* 
+	
 Actions:
-	* jump
-	* crawl
-	* shoot
-	* slow down
+	* Jump
+	* Crawl
+	* Shoot
+	* Slow down
 	
 Audio:
 	* Sound:
@@ -26,7 +48,14 @@ Audio:
 		- http://onlinesequencer.net
 		- http://freemusicarchive.org
 
-The character has a level of health
+Game Document Design:
+	* Story
+	* Characters
+	* Level/environment design
+	* Gameplay
+	* Art
+	* Sound and Music
+	* User Interface, Game Controls
 
 Story:
 	* A guy is trapped in his own dream. He has to pass all the levels in order to wake up. In total 10 levels with 10 sublevels each one.
@@ -36,14 +65,21 @@ Story:
 
 Enemies:
 	* fire on the ground
+	* lava ground
 	* spiders from top
 	* bats flying
 	* fishes jumping from bottom bridge
 	* snakes
 	* aboriginal with bow and arrows
-	* rocks on the ground
+	* rocks on the ground and falling from the top
 	* woods out of a tree
 	* rotating stuff
+	* falling ground
+	* slippery floor (ice)
+	* trampolines on the floor
+	* 
+	* 
+	* 
 	
 Levels:
 	* Cave
@@ -55,6 +91,7 @@ Levels:
 	* City
 	* Swamp
 	* Castle
+	* Candy level
 	* Moon
 	* Sewers
 	* Fantasy
@@ -68,6 +105,7 @@ Dissemination:
 	* http://gamasutra.com
 	* http://www.gamedev.net
 
-http://www.spriters-resource.com/arcade/ms3
-http://www.retrogamezone.co.uk/metalslug/creatureenemies.htm
-http://spritedatabase.net
+Sprites:
+	* http://www.spriters-resource.com/arcade/ms3
+	* http://www.retrogamezone.co.uk/metalslug/creatureenemies.htm
+	* http://spritedatabase.net
