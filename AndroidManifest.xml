@@ -17,6 +17,7 @@
         
         <activity
             android:name="com.mauriciotogneri.wakeupmax.Main"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="landscape" >
             
             <intent-filter>
