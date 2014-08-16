@@ -1,4 +1,4 @@
-testplatform
+Wake up, Max!
 ============
 
-A test platform game
+**Wake up, Max!** is a platform game for Android.
