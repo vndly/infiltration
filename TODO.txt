@@ -44,6 +44,7 @@ Audio:
 		- http://www.freesound.org/people/FoolBoyMedia/sounds/220754
 		
 	* Music:
+		- http://www.fakemusicgenerator.com
 		- http://www.audiosauna.com/studio
 		- http://www.earslap.com/projectslab/otomata
 		- http://onlinesequencer.net
