@@ -22,6 +22,7 @@ public class Mario extends Process
 	private final Button buttonUp;
 
 	private final Sky sky;
+	private final Mountains mountains;
 
 	private final Animation animationRight;
 	private final Animation animationLeft;
@@ -40,7 +41,7 @@ public class Mario extends Process
 
 		this.x = 0;
 		this.y = (World.BLOCK_SIZE * 3);
-		this.z = 1;
+		this.z = 2;
 
 		setSprite(R.raw.mario_running_right_1);
 
@@ -59,6 +60,9 @@ public class Mario extends Process
 		this.sky = new Sky();
 		this.sky.start();
 
+		this.mountains = new Mountains();
+		this.mountains.start();
+
 		setJumping(false);
 		updateButtons();
 		playMusic(R.raw.music);
@@ -71,6 +75,9 @@ public class Mario extends Process
 		updatePosition(delta);
 		updateCamera();
 		updateButtons();
+		
+		this.sky.update(this.camera);
+		this.mountains.update(this.camera);
 	}
 
 	private void updatePosition(float delta)
