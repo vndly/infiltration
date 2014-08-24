@@ -1,6 +1,6 @@
 package com.mauriciotogneri.wakeupmax;
 
-import com.mauriciotogneri.wakeupmax.objects.Mario;
+import com.mauriciotogneri.wakeupmax.objects.Max;
 import com.mauriciotogneri.wakeupmax.objects.World;
 import com.misty.graphics.ScreenResolution;
 import com.misty.kernel.Misty;
@@ -16,8 +16,8 @@ public class Main extends Misty
 		World world = new World();
 		world.create();
 		
-		Mario mario = new Mario(world);
-		mario.start();
+		Max max = new Max(world);
+		max.start();
 	}
 	
 	@Override
