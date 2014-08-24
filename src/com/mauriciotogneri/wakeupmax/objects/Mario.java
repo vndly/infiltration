@@ -43,10 +43,10 @@ public class Mario extends Process
 		this.y = (World.BLOCK_SIZE * 3);
 		this.z = 2;
 		
-		setImage(Resources.Images.Sprites.MARIO_RUNNING_RIGHT_1);
+		setImage(Resources.Images.Sprites.CHARACTER_RUNNING_RIGHT_1);
 		
-		this.animationRight = new Animation(0.08f, Resources.Images.Sprites.MARIO_RUNNING_RIGHT_1, Resources.Images.Sprites.MARIO_RUNNING_RIGHT_2, Resources.Images.Sprites.MARIO_RUNNING_RIGHT_3);
-		this.animationLeft = new Animation(0.08f, Resources.Images.Sprites.MARIO_RUNNING_LEFT_1, Resources.Images.Sprites.MARIO_RUNNING_LEFT_2, Resources.Images.Sprites.MARIO_RUNNING_LEFT_3);
+		this.animationRight = new Animation(0.08f, Resources.Images.Sprites.CHARACTER_RUNNING_RIGHT_1, Resources.Images.Sprites.CHARACTER_RUNNING_RIGHT_2, Resources.Images.Sprites.CHARACTER_RUNNING_RIGHT_3, Resources.Images.Sprites.CHARACTER_RUNNING_RIGHT_4);
+		this.animationLeft = new Animation(0.08f, Resources.Images.Sprites.CHARACTER_RUNNING_LEFT_1, Resources.Images.Sprites.CHARACTER_RUNNING_LEFT_2, Resources.Images.Sprites.CHARACTER_RUNNING_LEFT_3, Resources.Images.Sprites.CHARACTER_RUNNING_LEFT_4);
 		
 		this.buttonLeft = new Button(5, 5, Resources.Images.Controls.ARROW_LEFT);
 		this.buttonLeft.start();
@@ -221,7 +221,7 @@ public class Mario extends Process
 			}
 			else
 			{
-				setImage(Resources.Images.Sprites.MARIO_JUMPING_LEFT);
+				setImage(Resources.Images.Sprites.CHARACTER_JUMPING_LEFT);
 			}
 		}
 		
@@ -236,7 +236,7 @@ public class Mario extends Process
 			}
 			else
 			{
-				setImage(Resources.Images.Sprites.MARIO_JUMPING_RIGHT);
+				setImage(Resources.Images.Sprites.CHARACTER_JUMPING_RIGHT);
 			}
 		}
 		
@@ -246,11 +246,11 @@ public class Mario extends Process
 			
 			if (this.facingRight)
 			{
-				setImage(Resources.Images.Sprites.MARIO_JUMPING_RIGHT);
+				setImage(Resources.Images.Sprites.CHARACTER_JUMPING_RIGHT);
 			}
 			else
 			{
-				setImage(Resources.Images.Sprites.MARIO_JUMPING_LEFT);
+				setImage(Resources.Images.Sprites.CHARACTER_JUMPING_LEFT);
 			}
 		}
 		
@@ -258,11 +258,11 @@ public class Mario extends Process
 		{
 			if (this.facingRight)
 			{
-				setImage(Resources.Images.Sprites.MARIO_RUNNING_RIGHT_1);
+				setImage(Resources.Images.Sprites.CHARACTER_RUNNING_RIGHT_1);
 			}
 			else
 			{
-				setImage(Resources.Images.Sprites.MARIO_RUNNING_LEFT_1);
+				setImage(Resources.Images.Sprites.CHARACTER_RUNNING_LEFT_1);
 			}
 		}
 	}

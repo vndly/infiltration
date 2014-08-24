@@ -9,15 +9,19 @@ public class Resources
 		public static class Sprites
 		{
 			private static final String ROOT = Images.ROOT_IMAGES + "sprites/";
-
-			public static final String MARIO_JUMPING_LEFT = Sprites.ROOT + "mario_jumping_left.png";
-			public static final String MARIO_JUMPING_RIGHT = Sprites.ROOT + "mario_jumping_right.png";
-			public static final String MARIO_RUNNING_LEFT_1 = Sprites.ROOT + "mario_running_left_1.png";
-			public static final String MARIO_RUNNING_LEFT_2 = Sprites.ROOT + "mario_running_left_2.png";
-			public static final String MARIO_RUNNING_LEFT_3 = Sprites.ROOT + "mario_running_left_3.png";
-			public static final String MARIO_RUNNING_RIGHT_1 = Sprites.ROOT + "mario_running_right_1.png";
-			public static final String MARIO_RUNNING_RIGHT_2 = Sprites.ROOT + "mario_running_right_2.png";
-			public static final String MARIO_RUNNING_RIGHT_3 = Sprites.ROOT + "mario_running_right_3.png";
+			
+			public static final String CHARACTER_JUMPING_LEFT = Sprites.ROOT + "jumping_left.png";
+			public static final String CHARACTER_JUMPING_RIGHT = Sprites.ROOT + "jumping_right.png";
+			
+			public static final String CHARACTER_RUNNING_LEFT_1 = Sprites.ROOT + "running_left_1.png";
+			public static final String CHARACTER_RUNNING_LEFT_2 = Sprites.ROOT + "running_left_2.png";
+			public static final String CHARACTER_RUNNING_LEFT_3 = Sprites.ROOT + "running_left_3.png";
+			public static final String CHARACTER_RUNNING_LEFT_4 = Sprites.ROOT + "running_left_4.png";
+			
+			public static final String CHARACTER_RUNNING_RIGHT_1 = Sprites.ROOT + "running_right_1.png";
+			public static final String CHARACTER_RUNNING_RIGHT_2 = Sprites.ROOT + "running_right_2.png";
+			public static final String CHARACTER_RUNNING_RIGHT_3 = Sprites.ROOT + "running_right_3.png";
+			public static final String CHARACTER_RUNNING_RIGHT_4 = Sprites.ROOT + "running_right_4.png";
 		}
 		
 		public static class Levels
