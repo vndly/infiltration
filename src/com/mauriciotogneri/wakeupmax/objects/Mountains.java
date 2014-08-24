@@ -10,8 +10,8 @@ public class Mountains extends Process
 	{
 		super(false, false);
 		
-		this.x = 0;
-		this.y = 96;
+		this.x = 1;
+		this.y = 4 * World.BLOCK_SIZE;
 		this.z = 1;
 		
 		setImage(Resources.Images.Levels.MOUNTAINS);
