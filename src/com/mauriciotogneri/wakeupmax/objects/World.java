@@ -37,7 +37,7 @@ public class World
 				int i = Integer.parseInt(values[0]);
 				int j = Integer.parseInt(values[1]);
 				
-				addBlock(i, j, Resources.Images.Levels.STONE);
+				addBlock(i, j, Resources.Images.Blocks.STONE);
 			}
 			
 		}
