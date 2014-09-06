@@ -29,14 +29,16 @@ Tisp:
 	* The sun is smiling and following you with his eyes
 	* Surround everything with a black thick silhouette (Doodle Jump)
 	* Storyline like Meganoid. You can't play the next sublevel until you finish the current one
-	* 
 	
 Actions:
 	* Jump
 	* Crawl
 	* Shoot
 	* Slow down
-	
+
+Fonts:
+	* http://wordmark.it
+
 Audio:
 	* Sound:
 		- http://www.superflashbros.net/as3sfxr
