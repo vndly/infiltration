@@ -51,6 +51,8 @@ Audio:
 		- http://www.earslap.com/projectslab/otomata
 		- http://onlinesequencer.net
 		- http://freemusicarchive.org
+		- http://rekkerd.org/downloads
+		- http://groovemixer.com/samples
 
 Game Document Design:
 	* Story
