@@ -46,6 +46,10 @@ Audio:
 		- http://www.freesound.org/people/FoolBoyMedia/sounds/220754
 		
 	* Music:
+		- http://www.beatlab.com
+		- http://soundation.com/studio
+		- http://www.tony-b.org
+		
 		- http://www.fakemusicgenerator.com
 		- http://www.audiosauna.com/studio
 		- http://www.earslap.com/projectslab/otomata
