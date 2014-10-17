@@ -1,10 +1,9 @@
-8-bit style
-
 Games:
 	* Rayman
 		- Rayman Legends
 		- Rayman Origins
 	* Super Time Force
+	* http://8bitflashgames.com/robot-wants-puppy/
 	* Bro Force
 	* Aban Hawkins & 1000 Spikes
 	* Mercenary Kings
@@ -23,6 +22,7 @@ Games:
 	* Mario
 		- New Super Mario Bros
 		- Super Paper Mario
+	* https://www.behance.net/gallery/19529861/Pixel-Art-2014
 
 Tisp:
 	* Have an animated background (like the leafs of the trees moving because of the wind)
@@ -36,28 +36,6 @@ Actions:
 	* Shoot
 	* Slow down
 
-Fonts:
-	* http://wordmark.it
-
-Audio:
-	* Sound:
-		- http://www.superflashbros.net/as3sfxr
-		- http://www.freesound.org
-		- http://www.freesound.org/people/FoolBoyMedia/sounds/220754
-		
-	* Music:
-		- http://www.beatlab.com
-		- http://soundation.com/studio
-		- http://www.tony-b.org
-		
-		- http://www.fakemusicgenerator.com
-		- http://www.audiosauna.com/studio
-		- http://www.earslap.com/projectslab/otomata
-		- http://onlinesequencer.net
-		- http://freemusicarchive.org
-		- http://rekkerd.org/downloads
-		- http://groovemixer.com/samples
-
 Game Document Design:
 	* Story
 	* Characters
@@ -70,7 +48,6 @@ Game Document Design:
 Story:
 	* A guy is trapped in his own dream. He has to pass all the levels in order to wake up. In total 10 levels with 10 sublevels each one.
 	  Each sublevel consists in walk from left to right and reach the portal that will take you to the next sublevel.
-	
 	* Two monkeys live in the jungle. One day some guys steal the female monkey. Then the male monkey start to run to rescue her.
 
 Enemies:
@@ -87,9 +64,6 @@ Enemies:
 	* falling ground
 	* slippery floor (ice)
 	* trampolines on the floor
-	* 
-	* 
-	* 
 	
 Levels:
 	* Cave
@@ -109,13 +83,3 @@ Levels:
 Items to catch:
 	* extra time
 	* extra health
-	
-Dissemination:
-	* http://www.java-gaming.org
-	* http://gamasutra.com
-	* http://www.gamedev.net
-
-Sprites:
-	* http://www.spriters-resource.com/arcade/ms3
-	* http://www.retrogamezone.co.uk/metalslug/creatureenemies.htm
-	* http://spritedatabase.net
