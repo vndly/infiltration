@@ -1,6 +1,5 @@
 package com.mauriciotogneri.wakeupmax.objects;
 
-import com.mauriciotogneri.wakeupmax.Main;
 import com.mauriciotogneri.wakeupmax.Resources;
 import com.misty.graphics.Animation;
 import com.misty.kernel.Process;
@@ -58,7 +57,7 @@ public class Max extends Process
 		this.buttonRight = new Button(Button.SIZE + 40, 10, Resources.Images.Controls.ARROW_RIGHT);
 		this.buttonRight.start();
 
-		this.buttonUp = new Button(Main.RESOLUTION_X - Button.SIZE - 15, 10, Resources.Images.Controls.ARROW_UP);
+		this.buttonUp = new Button(getResolutionX() - Button.SIZE - 15, 10, Resources.Images.Controls.ARROW_UP);
 		this.buttonUp.start();
 
 		this.background = new Background(0, 2, 1, 2, 2, "WALL");
@@ -177,15 +176,15 @@ public class Max extends Process
 
 	private void updateCamera()
 	{
-		this.camera.x = (this.x - (Main.RESOLUTION_X / 2)) + this.width;
-		this.camera.y = (this.y - (Main.RESOLUTION_Y / 2)) + this.height;
+		this.camera.x = (this.x - (getResolutionX() / 2)) + this.width;
+		this.camera.y = (this.y - (getResolutionY() / 2)) + this.height;
 
 		if (this.camera.x < 0)
 		{
 			this.camera.x = 0;
 		}
 
-		int limitX = 960 - Main.RESOLUTION_X;
+		int limitX = 960 - getResolutionX();
 
 		if (this.camera.x > limitX)
 		{
