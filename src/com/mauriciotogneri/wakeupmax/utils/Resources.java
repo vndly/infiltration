@@ -1,4 +1,4 @@
-package com.mauriciotogneri.wakeupmax;
+package com.mauriciotogneri.wakeupmax.utils;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;

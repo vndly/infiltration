@@ -1,6 +1,6 @@
 package com.mauriciotogneri.wakeupmax.objects;
 
-import com.mauriciotogneri.wakeupmax.Resources;
+import com.mauriciotogneri.wakeupmax.utils.Resources;
 import com.misty.graphics.Animation;
 import com.misty.kernel.Process;
 

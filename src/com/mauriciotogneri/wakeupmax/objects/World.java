@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import android.content.Context;
-import com.mauriciotogneri.wakeupmax.Resources;
+import com.mauriciotogneri.wakeupmax.utils.Resources;
 
 public class World
 {

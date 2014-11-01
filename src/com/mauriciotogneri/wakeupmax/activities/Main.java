@@ -1,4 +1,4 @@
-package com.mauriciotogneri.wakeupmax;
+package com.mauriciotogneri.wakeupmax.activities;
 
 import com.mauriciotogneri.wakeupmax.objects.Max;
 import com.mauriciotogneri.wakeupmax.objects.World;

@@ -1,7 +1,7 @@
 package com.mauriciotogneri.wakeupmax.objects;
 
-import com.mauriciotogneri.wakeupmax.Resources;
-import com.mauriciotogneri.wakeupmax.Resources.Images.Backgrounds;
+import com.mauriciotogneri.wakeupmax.utils.Resources;
+import com.mauriciotogneri.wakeupmax.utils.Resources.Images.Backgrounds;
 import com.misty.graphics.Camera;
 import com.misty.kernel.Process;
 
