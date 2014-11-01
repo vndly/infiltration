@@ -1,7 +1,6 @@
 package com.mauriciotogneri.wakeupmax.controls;
 
 import com.mauriciotogneri.wakeupmax.activities.Main;
-import com.mauriciotogneri.wakeupmax.objects.Button;
 import com.mauriciotogneri.wakeupmax.utils.Resources;
 
 public class Controls

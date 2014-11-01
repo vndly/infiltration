@@ -1,4 +1,4 @@
-package com.mauriciotogneri.wakeupmax.objects;
+package com.mauriciotogneri.wakeupmax.controls;
 
 import com.misty.kernel.Process;
 
