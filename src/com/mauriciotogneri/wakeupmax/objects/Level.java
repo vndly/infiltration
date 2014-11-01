@@ -1,5 +1,7 @@
 package com.mauriciotogneri.wakeupmax.objects;
 
+import com.mauriciotogneri.wakeupmax.controls.Input;
+
 public class Level
 {
 	private final Max max;
@@ -13,8 +15,8 @@ public class Level
 		this.max.start();
 	}
 
-	public void update(float delta)
+	public void update(float delta, Input input)
 	{
-		this.max.update(delta);
+		this.max.update(delta, input);
 	}
 }

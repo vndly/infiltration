@@ -1,5 +1,6 @@
 package com.mauriciotogneri.wakeupmax.objects;
 
+import com.mauriciotogneri.wakeupmax.controls.Input;
 import com.mauriciotogneri.wakeupmax.utils.Resources;
 import com.misty.graphics.Animation;
 import com.misty.kernel.Process;
@@ -15,10 +16,6 @@ public class Max extends Process
 	private float speedY = 0;
 
 	private final World world;
-
-	private final Button buttonLeft;
-	private final Button buttonRight;
-	private final Button buttonUp;
 
 	private final Background background;
 
@@ -51,15 +48,6 @@ public class Max extends Process
 		this.animationRight = new Animation(0.08f, Resources.Images.Sprites.CHARACTER_RUNNING_RIGHT_1, Resources.Images.Sprites.CHARACTER_RUNNING_RIGHT_2, Resources.Images.Sprites.CHARACTER_RUNNING_RIGHT_3, Resources.Images.Sprites.CHARACTER_RUNNING_RIGHT_4);
 		this.animationLeft = new Animation(0.08f, Resources.Images.Sprites.CHARACTER_RUNNING_LEFT_1, Resources.Images.Sprites.CHARACTER_RUNNING_LEFT_2, Resources.Images.Sprites.CHARACTER_RUNNING_LEFT_3, Resources.Images.Sprites.CHARACTER_RUNNING_LEFT_4);
 
-		this.buttonLeft = new Button(10, 10, Resources.Images.Controls.ARROW_LEFT);
-		this.buttonLeft.start();
-
-		this.buttonRight = new Button(Button.SIZE + 40, 10, Resources.Images.Controls.ARROW_RIGHT);
-		this.buttonRight.start();
-
-		this.buttonUp = new Button(getResolutionX() - Button.SIZE - 15, 10, Resources.Images.Controls.ARROW_UP);
-		this.buttonUp.start();
-
 		this.background = new Background(0, 2, 1, 2, 2, "WALL");
 		this.background.start();
 
@@ -67,10 +55,9 @@ public class Max extends Process
 		playMusic(Resources.Music.MUSIC);
 	}
 
-	@Override
-	public void update(float delta)
+	public void update(float delta, Input input)
 	{
-		processInput(delta);
+		processInput(delta, input);
 		updatePosition(delta);
 		updateCamera();
 		
@@ -190,9 +177,9 @@ public class Max extends Process
 		}
 	}
 
-	private void processInput(float delta)
+	private void processInput(float delta, Input input)
 	{
-		if (isPressed(this.buttonLeft.x, this.buttonLeft.x + Button.SIZE, this.buttonLeft.y, this.buttonLeft.y + Button.SIZE))
+		if (input.left)
 		{
 			this.accelerationX = -Max.HORIZONTAL_SPEED;
 			this.facingRight = false;
@@ -207,7 +194,7 @@ public class Max extends Process
 			}
 		}
 
-		if (isPressed(this.buttonRight.x, this.buttonRight.x + Button.SIZE, this.buttonRight.y, this.buttonRight.y + Button.SIZE))
+		if (input.right)
 		{
 			this.accelerationX = Max.HORIZONTAL_SPEED;
 			this.facingRight = true;
@@ -222,7 +209,7 @@ public class Max extends Process
 			}
 		}
 
-		if (isPressed(this.buttonUp.x, this.buttonUp.x + Button.SIZE, this.buttonUp.y, this.buttonUp.y + Button.SIZE) && (!this.jumping))
+		if (input.up && (!this.jumping))
 		{
 			setJumping(true);
 
