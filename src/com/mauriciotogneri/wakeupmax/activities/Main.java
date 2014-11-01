@@ -1,6 +1,6 @@
 package com.mauriciotogneri.wakeupmax.activities;
 
-import com.mauriciotogneri.wakeupmax.objects.Max;
+import com.mauriciotogneri.wakeupmax.objects.Game;
 import com.mauriciotogneri.wakeupmax.objects.World;
 import com.misty.graphics.ScreenResolution;
 import com.misty.kernel.Misty;
@@ -11,14 +11,13 @@ public class Main extends Misty
 	
 	// public static int RESOLUTION_Y = 10 * World.BLOCK_SIZE;
 	
+	private Game game;
+	
 	@Override
 	public void start()
 	{
-		World world = new World();
-		world.create(this);
-		
-		Max max = new Max(world);
-		max.start();
+		this.game = new Game();
+		this.game.start();
 	}
 	
 	@Override
