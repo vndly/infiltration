@@ -2,7 +2,6 @@ package com.mauriciotogneri.wakeupmax.objects;
 
 import com.mauriciotogneri.wakeupmax.utils.Resources;
 import com.mauriciotogneri.wakeupmax.utils.Resources.Images.Backgrounds;
-import com.misty.graphics.Camera;
 import com.misty.kernel.Process;
 
 public class Background extends Process
@@ -29,9 +28,9 @@ public class Background extends Process
 		setImage(Resources.getImage(Backgrounds.class, image));
 	}
 	
-	public void update(Camera camera)
+	public void update()
 	{
-		this.x = camera.x - (camera.x / this.h) + this.initialX;
-		this.y = camera.y - (camera.y / this.v) + this.initialY;
+		this.x = this.camera.x - (this.camera.x / this.h) + this.initialX;
+		this.y = this.camera.y - (this.camera.y / this.v) + this.initialY;
 	}
 }
