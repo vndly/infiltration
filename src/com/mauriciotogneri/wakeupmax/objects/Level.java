@@ -1,6 +1,7 @@
 package com.mauriciotogneri.wakeupmax.objects;
 
 import com.mauriciotogneri.wakeupmax.controls.Input;
+import com.mauriciotogneri.wakeupmax.utils.Resources;
 
 public class Level
 {
@@ -12,7 +13,7 @@ public class Level
 		World world = new World();
 		world.create("maps/map_1.txt");
 		
-		this.background = new Background(0, 2, 1, 2, 2, "WALL");
+		this.background = new Background(0, 2, 1, 2, 2, Resources.Images.Backgrounds.WALL);
 		this.background.start();
 		
 		this.max = new Max(world);

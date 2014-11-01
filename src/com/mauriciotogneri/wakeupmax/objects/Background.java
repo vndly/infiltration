@@ -1,7 +1,5 @@
 package com.mauriciotogneri.wakeupmax.objects;
 
-import com.mauriciotogneri.wakeupmax.utils.Resources;
-import com.mauriciotogneri.wakeupmax.utils.Resources.Images.Backgrounds;
 import com.misty.kernel.Process;
 
 public class Background extends Process
@@ -25,7 +23,7 @@ public class Background extends Process
 		this.h = h;
 		this.v = v;
 		
-		setImage(Resources.getImage(Backgrounds.class, image));
+		setImage(image);
 	}
 	
 	public void update()
