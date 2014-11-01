@@ -30,7 +30,7 @@ Tisp:
 	* Surround everything with a black thick silhouette (Doodle Jump)
 	* Storyline like Meganoid. You can't play the next sublevel until you finish the current one
 	
-Building Escape:
+Building Escape: (collapsing)
 	Things falling from the cealing
 	fire from bottom, top, left and right
 	alienas shooting
