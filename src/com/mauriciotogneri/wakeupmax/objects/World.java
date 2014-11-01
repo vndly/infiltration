@@ -13,33 +13,33 @@ public class World
 	private static int WORLD_SIZE_X = 30;
 	private static int WORLD_SIZE_Y = 10;
 	private final WorldBlock[][] blocks;
-	
+
 	public World()
 	{
 		this.blocks = new WorldBlock[World.WORLD_SIZE_X][World.WORLD_SIZE_Y];
 	}
-	
+
 	public void create(String path)
 	{
 		InputStream inputstream = null;
-
+		
 		try
 		{
 			inputstream = Assets.getInputStream(path);
-			
+
 			BufferedReader reader = new BufferedReader(new InputStreamReader(inputstream));
 			String line = "";
-			
+
 			while ((line = reader.readLine()) != null)
 			{
 				String[] values = line.split(",");
-
+				
 				int i = Integer.parseInt(values[0]);
 				int j = Integer.parseInt(values[1]);
-
+				
 				addBlock(i, j, Resources.Images.Blocks.STONE);
 			}
-
+			
 		}
 		catch (IOException e)
 		{
@@ -47,19 +47,9 @@ public class World
 		}
 		finally
 		{
-			if (inputstream != null)
-			{
-				try
-				{
-					inputstream.close();
-				}
-				catch (IOException e)
-				{
-					e.printStackTrace();
-				}
-			}
+			Assets.close(inputstream);
 		}
-		
+
 		// for (int i = 0; i < 32; i++)
 		// {
 		// for (int j = 0; j < 2; j++)
@@ -72,7 +62,7 @@ public class World
 		// {
 		// addBlock(i, 2, Resources.Images.Levels.GROUND_2);
 		// }
-
+		
 		// addBlock(6, 3, Resources.Images.Levels.GROUND_1);
 		// addBlock(7, 3, Resources.Images.Levels.GROUND_1);
 		// addBlock(8, 3, Resources.Images.Levels.GROUND_1);
@@ -111,33 +101,33 @@ public class World
 		//
 		// addBlock(20, 3, Resources.Images.Levels.GROUND_2);
 	}
-	
+
 	private void addBlock(int i, int j, String sprite)
 	{
 		WorldBlock ground = new WorldBlock(i * World.BLOCK_SIZE, j * World.BLOCK_SIZE, sprite);
 		ground.start();
 		this.blocks[i][j] = ground;
 	}
-	
+
 	public void checkBottom(Max max)
 	{
 		Cell cellA = new Cell(max.x, (max.y + max.height) - 1);
 		Cell cellB = new Cell((max.x + max.width) - 1, (max.y + max.height) - 1);
-		
+
 		if ((!checkCellBottom(max, cellA)) && (!cellA.equals(cellB)))
 		{
 			checkCellBottom(max, cellB);
 		}
 	}
-	
+
 	private boolean checkCellBottom(Max max, Cell cell)
 	{
 		boolean result = false;
-		
+
 		if (getBlock(cell.i, cell.j) == null)
 		{
 			WorldBlock blockBottom = getBlock(cell.i, cell.j - 1);
-			
+
 			if ((blockBottom != null) && blocksIntersect(max, blockBottom))
 			{
 				max.y = blockBottom.y + blockBottom.height;
@@ -145,111 +135,111 @@ public class World
 				result = true;
 			}
 		}
-		
+
 		return result;
 	}
-	
+
 	public void checkUp(Max max)
 	{
 		Cell cellA = new Cell(max.x, max.y);
 		Cell cellB = new Cell(max.x, max.y);
-		
+
 		if ((!checkCellUp(max, cellA)) && (!cellA.equals(cellB)))
 		{
 			checkCellUp(max, cellB);
 		}
 	}
-	
+
 	private boolean checkCellUp(Max max, Cell cell)
 	{
 		boolean result = false;
-		
+
 		if (getBlock(cell.i, cell.j) == null)
 		{
 			WorldBlock blockUp = getBlock(cell.i, cell.j + 1);
-			
+
 			if ((blockUp != null) && blocksIntersect(max, blockUp))
 			{
 				max.y = blockUp.y - max.height;
 				result = true;
 			}
 		}
-		
+
 		return result;
 	}
-	
+
 	public void checkLeft(Max max)
 	{
 		Cell cellA = new Cell((max.x + max.width) - 1, (max.y + max.height) - 1);
 		Cell cellB = new Cell((max.x + max.width) - 1, max.y);
-		
+
 		if ((!checkCellLeft(max, cellA)) && (!cellA.equals(cellB)))
 		{
 			checkCellLeft(max, cellB);
 		}
 	}
-	
+
 	private boolean checkCellLeft(Max max, Cell cell)
 	{
 		boolean result = false;
-		
+
 		if (getBlock(cell.i, cell.j) == null)
 		{
 			WorldBlock blockLeft = getBlock(cell.i - 1, cell.j);
-			
+
 			if ((blockLeft != null) && blocksIntersect(max, blockLeft))
 			{
 				max.x = blockLeft.x + blockLeft.width;
 				result = true;
 			}
 		}
-		
+
 		return result;
 	}
-	
+
 	public void checkRight(Max max)
 	{
 		Cell cellA = new Cell(max.x, (max.y + max.height) - 1);
 		Cell cellB = new Cell(max.x, max.y);
-		
+
 		if ((!checkCellRight(max, cellA)) && (!cellA.equals(cellB)))
 		{
 			checkCellRight(max, cellB);
 		}
 	}
-	
+
 	private boolean checkCellRight(Max max, Cell cell)
 	{
 		boolean result = false;
-		
+
 		if (getBlock(cell.i, cell.j) == null)
 		{
 			WorldBlock blockRight = getBlock(cell.i + 1, cell.j);
-			
+
 			if ((blockRight != null) && blocksIntersect(max, blockRight))
 			{
 				max.x = blockRight.x - max.width;
 				result = true;
 			}
 		}
-		
+
 		return result;
 	}
-	
+
 	private boolean blocksIntersect(Max max, WorldBlock block)
 	{
 		boolean condition1 = (max.x + max.width) <= block.x;
 		boolean condition2 = (block.x + block.width) <= max.x;
 		boolean condition3 = (max.y + max.height) <= block.y;
 		boolean condition4 = (block.y + block.height) <= max.y;
-		
+
 		return ((!condition1) && (!condition2) && (!condition3) && (!condition4));
 	}
-	
+
 	private WorldBlock getBlock(int i, int j)
 	{
 		WorldBlock result = null;
-		
+
 		try
 		{
 			result = this.blocks[i][j];
@@ -257,7 +247,7 @@ public class World
 		catch (Exception e)
 		{
 		}
-		
+
 		return result;
 	}
 }
