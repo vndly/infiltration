@@ -4,32 +4,30 @@ import com.mauriciotogneri.wakeupmax.controls.Input;
 import com.mauriciotogneri.wakeupmax.utils.Resources;
 import com.misty.graphics.Animation;
 import com.misty.kernel.Process;
+import com.misty.math.Vector;
 
 public class Max extends Process
 {
-	private boolean jumping = false;
-	
-	private float accelerationX = 0;
-	private float accelerationY = 0;
-	
-	private float speedX = 0;
-	private float speedY = 0;
-	
 	private final World world;
 	
-	private final Animation animationRight;
-	private final Animation animationLeft;
+	private final Animation animationRunning;
 	
-	private boolean facingRight = true;
+	private final Vector position = new Vector();
+	private final Vector acceleration = new Vector();
+	private final Vector velocity = new Vector();
+	private State state = State.IDLE;
+	private boolean jumpingPressed = false;
 	
-	private static final int MAX_SPEED_Y = 10;
-	private static final int MAX_ACCELERATION_Y_DOWN = -400;
-	private static final int GRAVITY = -2200;
+	private static final float FRICTION = 0.6f;
+	private static final int GRAVITY = -World.BLOCK_SIZE * 50;
+	private static final int MAX_JUMP_SPEED = World.BLOCK_SIZE * 18;
+	private static final int MAX_FALL_SPEED = -World.BLOCK_SIZE * 10;
+	private static final int MAX_SPEED_X = World.BLOCK_SIZE * 6; // number of blocks passed in 1 second
 	
-	private static final int JUMP_FORCE = 590;
-	
-	private static final int HORIZONTAL_SPEED = 200;
-	private static final int HORIZONTAL_FRICTION = 20;
+	private enum State
+	{
+		IDLE, RUNNING, JUMPING
+	}
 	
 	public Max(World world)
 	{
@@ -37,41 +35,109 @@ public class Max extends Process
 		
 		this.world = world;
 		
-		this.x = 2 * World.BLOCK_SIZE;
-		this.y = 4 * World.BLOCK_SIZE;
+		this.x = World.BLOCK_SIZE * 6;
+		this.y = World.BLOCK_SIZE * 5;
 		this.z = 2;
 		
-		setImage(Resources.Images.Sprites.CHARACTER_RUNNING_RIGHT_1);
+		this.position.set(this.x, this.y);
 		
-		this.animationRight = new Animation(0.08f, Resources.Images.Sprites.CHARACTER_RUNNING_RIGHT_1, Resources.Images.Sprites.CHARACTER_RUNNING_RIGHT_2, Resources.Images.Sprites.CHARACTER_RUNNING_RIGHT_3, Resources.Images.Sprites.CHARACTER_RUNNING_RIGHT_4);
-		this.animationLeft = new Animation(0.08f, Resources.Images.Sprites.CHARACTER_RUNNING_LEFT_1, Resources.Images.Sprites.CHARACTER_RUNNING_LEFT_2, Resources.Images.Sprites.CHARACTER_RUNNING_LEFT_3, Resources.Images.Sprites.CHARACTER_RUNNING_LEFT_4);
+		setImage(Resources.Images.Sprites.CHARACTER_IDLE);
 		
-		setJumping(false);
-		playMusic(Resources.Music.MUSIC);
+		this.animationRunning = new Animation(0.05f, Resources.Images.Sprites.CHARACTER_RUNNING_1, Resources.Images.Sprites.CHARACTER_RUNNING_2, Resources.Images.Sprites.CHARACTER_RUNNING_3, Resources.Images.Sprites.CHARACTER_RUNNING_4);
 	}
 	
 	public void update(float delta, Input input)
 	{
-		processInput(delta, input);
+		processInput(input);
+		
 		updatePosition(delta);
+		
+		checkPosition();
+		
+		setSprite(delta);
+		
 		updateCamera();
+	}
+	
+	private void setSprite(float delta)
+	{
+		if (this.state == State.IDLE)
+		{
+			setImage(Resources.Images.Sprites.CHARACTER_IDLE);
+			this.animationRunning.reset();
+		}
+		else if (this.state == State.RUNNING)
+		{
+			setImage(this.animationRunning.getSprite(delta));
+		}
+		else if (this.state == State.JUMPING)
+		{
+			setImage(Resources.Images.Sprites.CHARACTER_JUMPING);
+			this.animationRunning.reset();
+		}
 	}
 	
 	private void updatePosition(float delta)
 	{
-		float newX = updateX(delta);
-		float newY = updateY(delta);
+		this.acceleration.y = Max.GRAVITY;
+		this.acceleration.mul(delta);
+		this.velocity.add(this.acceleration);
+		
+		if (this.acceleration.x > 0)
+		{
+			this.velocity.x = Max.MAX_SPEED_X;
+		}
+		else if (this.acceleration.x < 0)
+		{
+			this.velocity.x = -Max.MAX_SPEED_X;
+		}
+		else if (this.acceleration.x == 0)
+		{
+			this.velocity.x *= Max.FRICTION;
+			
+			// TODO: ADJUST LIMIT
+			if (Math.abs(this.velocity.x) < 1)
+			{
+				this.velocity.x = 0;
+			}
+		}
+		
+		if (this.velocity.y < Max.MAX_FALL_SPEED)
+		{
+			this.velocity.y = Max.MAX_FALL_SPEED;
+		}
+		
+		this.position.add(this.velocity.copy().mul(delta));
+	}
+	
+	public void touchGround()
+	{
+		if (this.state == State.JUMPING)
+		{
+			this.state = State.IDLE;
+		}
+	}
+	
+	public void touchCeiling()
+	{
+		this.velocity.y = 0;
+	}
+	
+	private void checkPosition()
+	{
+		float newX = this.position.x;
+		float newY = this.position.y;
 		
 		if (newX != this.x)
 		{
 			this.x = newX;
 			
-			if (this.speedX < 0)
+			if (this.velocity.x < 0)
 			{
 				this.world.checkLeft(this);
 			}
 			
-			if (this.speedX > 0)
+			if (this.velocity.x > 0)
 			{
 				this.world.checkRight(this);
 			}
@@ -81,74 +147,69 @@ public class Max extends Process
 		{
 			this.y = newY;
 			
-			if (this.speedY < 0)
+			if (this.velocity.y <= 0)
 			{
 				this.world.checkBottom(this);
 			}
 			
-			if (this.speedY > 0)
+			if (this.velocity.y > 0)
 			{
-				this.world.checkUp(this);
+				this.world.checkTop(this);
 			}
 		}
+		
+		this.position.x = this.x;
+		this.position.y = this.y;
 	}
 	
-	private float updateX(float delta)
+	private void processInput(Input input)
 	{
-		float result = this.x;
-		
-		if (this.accelerationX > 0)
+		if (input.up)
 		{
-			this.accelerationX -= Max.HORIZONTAL_FRICTION;
+			if ((!this.jumpingPressed) && (this.state != State.JUMPING))
+			{
+				playSound(Resources.Sound.JUMP);
+				
+				this.jumpingPressed = true;
+				this.state = State.JUMPING;
+				this.velocity.y = Max.MAX_JUMP_SPEED;
+			}
 		}
-		else if (this.accelerationX < 0)
+		else
 		{
-			this.accelerationX += Max.HORIZONTAL_FRICTION;
-		}
-		
-		this.speedX = this.accelerationX * delta;
-		result = this.x + this.speedX;
-		
-		if (result < 0)
-		{
-			result = 0;
+			this.jumpingPressed = false;
 		}
 		
-		int limitX = 1024 - this.width;
-		
-		if (result > limitX)
+		if (input.left)
 		{
-			result = limitX;
+			this.orientationHorizontal = -1;
+			
+			if (this.state == State.IDLE)
+			{
+				this.state = State.RUNNING;
+			}
+			
+			this.acceleration.x = -1;
 		}
-		
-		return result;
-	}
-	
-	private float updateY(float delta)
-	{
-		float result = this.y;
-		
-		applyGravity(delta);
-		
-		this.speedY = this.accelerationY * delta;
-		
-		if (Math.abs(this.speedY) > Max.MAX_SPEED_Y)
+		else if (input.right)
 		{
-			this.speedY = Max.MAX_SPEED_Y * Math.signum(this.speedY);
+			this.orientationHorizontal = 1;
+			
+			if (this.state == State.IDLE)
+			{
+				this.state = State.RUNNING;
+			}
+			
+			this.acceleration.x = 1;
 		}
-		
-		result = this.y + this.speedY;
-		
-		return result;
-	}
-	
-	private void applyGravity(float delta)
-	{
-		this.accelerationY += Max.GRAVITY * delta;
-		
-		if (this.accelerationY < Max.MAX_ACCELERATION_Y_DOWN)
+		else
 		{
-			this.accelerationY = Max.MAX_ACCELERATION_Y_DOWN;
+			if (this.state == State.RUNNING)
+			{
+				this.state = State.IDLE;
+			}
+			
+			this.acceleration.x = 0;
 		}
 	}
 	
@@ -167,80 +228,6 @@ public class Max extends Process
 		if (this.camera.x > limitX)
 		{
 			this.camera.x = limitX;
-		}
-	}
-	
-	private void processInput(float delta, Input input)
-	{
-		if (input.left)
-		{
-			this.accelerationX = -Max.HORIZONTAL_SPEED;
-			this.facingRight = false;
-			
-			if (!this.jumping)
-			{
-				setImage(this.animationLeft.getSprite(delta));
-			}
-			else
-			{
-				setImage(Resources.Images.Sprites.CHARACTER_JUMPING_LEFT);
-			}
-		}
-		
-		if (input.right)
-		{
-			this.accelerationX = Max.HORIZONTAL_SPEED;
-			this.facingRight = true;
-			
-			if (!this.jumping)
-			{
-				setImage(this.animationRight.getSprite(delta));
-			}
-			else
-			{
-				setImage(Resources.Images.Sprites.CHARACTER_JUMPING_RIGHT);
-			}
-		}
-		
-		if (input.up && (!this.jumping))
-		{
-			setJumping(true);
-			
-			if (this.facingRight)
-			{
-				setImage(Resources.Images.Sprites.CHARACTER_JUMPING_RIGHT);
-			}
-			else
-			{
-				setImage(Resources.Images.Sprites.CHARACTER_JUMPING_LEFT);
-			}
-		}
-		
-		if ((this.accelerationX == 0.0) && (!this.jumping))
-		{
-			if (this.facingRight)
-			{
-				setImage(Resources.Images.Sprites.CHARACTER_RUNNING_RIGHT_1);
-			}
-			else
-			{
-				setImage(Resources.Images.Sprites.CHARACTER_RUNNING_LEFT_1);
-			}
-		}
-	}
-	
-	public void setJumping(boolean value)
-	{
-		this.jumping = value;
-		
-		if (this.jumping)
-		{
-			playSound(Resources.Sound.JUMP);
-			this.accelerationY = Max.JUMP_FORCE;
-		}
-		else
-		{
-			this.accelerationY = 0;
 		}
 	}
 }
