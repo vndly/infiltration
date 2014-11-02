@@ -13,5 +13,6 @@ public class BuildingBlock extends Process
 		this.z = 2;
 		
 		setImage("images/levels/block.png");
+		this.visible = false;
 	}
 }
