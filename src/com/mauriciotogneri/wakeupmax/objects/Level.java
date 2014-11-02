@@ -6,16 +6,13 @@ import com.mauriciotogneri.wakeupmax.utils.Resources;
 public class Level
 {
 	private final Protagonist max;
-	private final Background background;
 	
 	public static final int BLOCK_SIZE = 32;
 	
 	public Level()
 	{
-		Building building = new Building(Resources.Levels.LEVEL_1);
-		
-		this.background = new Background(1, Resources.Images.Levels.LEVEL_1);
-		this.background.start();
+		Building building = new Building(Resources.Levels.LEVEL_1, 1, Resources.Images.Levels.LEVEL_1);
+		building.start();
 		
 		this.max = new Protagonist(building);
 		this.max.start();

@@ -3,14 +3,21 @@ package com.mauriciotogneri.wakeupmax.objects;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import com.misty.kernel.Process;
+import com.misty.math.Rectangle;
 import com.misty.utils.Assets;
 
-public class Building
+public class Building extends Process
 {
-	private Block[][] blocks;
+	private Rectangle[][] blocks;
 	
-	public Building(String path)
+	public Building(String path, int z, String image)
 	{
+		super(false, false);
+		
+		this.z = z;
+		
+		setImage(image);
+		
 		try
 		{
 			JSONObject json = Assets.getJsonObject(path);
@@ -18,7 +25,7 @@ public class Building
 			int width = json.getInt("width");
 			int height = json.getInt("height");
 			
-			this.blocks = new Block[width][height];
+			this.blocks = new Rectangle[width][height];
 			
 			JSONArray blocks = json.getJSONArray("blocks");
 			
@@ -40,13 +47,13 @@ public class Building
 	
 	private void addBlock(int x, int y)
 	{
-		this.blocks[x][y] = new Block(x * Level.BLOCK_SIZE, y * Level.BLOCK_SIZE);
+		this.blocks[x][y] = new Rectangle(x * Level.BLOCK_SIZE, y * Level.BLOCK_SIZE, Level.BLOCK_SIZE, Level.BLOCK_SIZE);
 	}
 	
 	public void checkBottom(Protagonist protagonist)
 	{
-		Block blockA = getBlock(protagonist.x, protagonist.y - 1);
-		Block blockB = getBlock(protagonist.x + protagonist.width - 1, protagonist.y - 1);
+		Rectangle blockA = getBlock(protagonist.x, protagonist.y - 1);
+		Rectangle blockB = getBlock(protagonist.x + protagonist.width - 1, protagonist.y - 1);
 		
 		if ((!checkBlockBottom(protagonist, blockA)) && (blockA != blockB))
 		{
@@ -54,7 +61,7 @@ public class Building
 		}
 	}
 	
-	private boolean checkBlockBottom(Protagonist protagonist, Block block)
+	private boolean checkBlockBottom(Protagonist protagonist, Rectangle block)
 	{
 		boolean result = false;
 		
@@ -70,8 +77,8 @@ public class Building
 	
 	public void checkTop(Protagonist protagonist)
 	{
-		Block blockA = getBlock(protagonist.x, protagonist.y + protagonist.height);
-		Block blockB = getBlock(protagonist.x + protagonist.width - 1, protagonist.y + protagonist.height);
+		Rectangle blockA = getBlock(protagonist.x, protagonist.y + protagonist.height);
+		Rectangle blockB = getBlock(protagonist.x + protagonist.width - 1, protagonist.y + protagonist.height);
 		
 		if ((!checkBlockTop(protagonist, blockA)) && (blockA != blockB))
 		{
@@ -79,7 +86,7 @@ public class Building
 		}
 	}
 	
-	private boolean checkBlockTop(Protagonist protagonist, Block block)
+	private boolean checkBlockTop(Protagonist protagonist, Rectangle block)
 	{
 		boolean result = false;
 		
@@ -95,8 +102,8 @@ public class Building
 	
 	public void checkLeft(Protagonist protagonist)
 	{
-		Block blockA = getBlock(protagonist.x - 1, protagonist.y);
-		Block blockB = getBlock(protagonist.x - 1, protagonist.y + protagonist.height - 1);
+		Rectangle blockA = getBlock(protagonist.x - 1, protagonist.y);
+		Rectangle blockB = getBlock(protagonist.x - 1, protagonist.y + protagonist.height - 1);
 		
 		if ((!checkBlockLeft(protagonist, blockA)) && (blockA != blockB))
 		{
@@ -104,7 +111,7 @@ public class Building
 		}
 	}
 	
-	private boolean checkBlockLeft(Protagonist protagonist, Block block)
+	private boolean checkBlockLeft(Protagonist protagonist, Rectangle block)
 	{
 		boolean result = false;
 		
@@ -119,8 +126,8 @@ public class Building
 	
 	public void checkRight(Protagonist protagonist)
 	{
-		Block blockA = getBlock(protagonist.x + protagonist.width, protagonist.y);
-		Block blockB = getBlock(protagonist.x + protagonist.width, protagonist.y + protagonist.height - 1);
+		Rectangle blockA = getBlock(protagonist.x + protagonist.width, protagonist.y);
+		Rectangle blockB = getBlock(protagonist.x + protagonist.width, protagonist.y + protagonist.height - 1);
 		
 		if ((!checkBlockRight(protagonist, blockA)) && (blockA != blockB))
 		{
@@ -128,7 +135,7 @@ public class Building
 		}
 	}
 	
-	private boolean checkBlockRight(Protagonist protagonist, Block block)
+	private boolean checkBlockRight(Protagonist protagonist, Rectangle block)
 	{
 		boolean result = false;
 		
@@ -141,7 +148,7 @@ public class Building
 		return result;
 	}
 	
-	private boolean blocksIntersect(Process process, Block block)
+	private boolean blocksIntersect(Process process, Rectangle block)
 	{
 		boolean condition1 = (process.x + process.width) <= block.x;
 		boolean condition2 = (block.x + block.width) <= process.x;
@@ -153,9 +160,9 @@ public class Building
 		return ((!condition1) && (!condition2) && (!condition3) && (!condition4));
 	}
 	
-	private Block getBlock(float x, float y)
+	private Rectangle getBlock(float x, float y)
 	{
-		Block result = null;
+		Rectangle result = null;
 		
 		try
 		{
