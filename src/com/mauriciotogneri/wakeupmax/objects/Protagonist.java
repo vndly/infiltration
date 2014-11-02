@@ -39,9 +39,9 @@ public class Protagonist extends Process
 		
 		this.position.set(this.x, this.y);
 		
-		setImage(Resources.Images.Sprites.CHARACTER_IDLE);
+		setImage(Resources.Images.MainCharacter.CHARACTER_IDLE);
 		
-		this.animationRunning = new Animation(0.05f, Resources.Images.Sprites.CHARACTER_RUNNING_1, Resources.Images.Sprites.CHARACTER_RUNNING_2, Resources.Images.Sprites.CHARACTER_RUNNING_3, Resources.Images.Sprites.CHARACTER_RUNNING_4);
+		this.animationRunning = new Animation(0.05f, Resources.Images.MainCharacter.CHARACTER_RUNNING_1, Resources.Images.MainCharacter.CHARACTER_RUNNING_2, Resources.Images.MainCharacter.CHARACTER_RUNNING_3, Resources.Images.MainCharacter.CHARACTER_RUNNING_4);
 	}
 	
 	public void update(float delta, Input input)
@@ -61,7 +61,7 @@ public class Protagonist extends Process
 	{
 		if (this.state == State.IDLE)
 		{
-			setImage(Resources.Images.Sprites.CHARACTER_IDLE);
+			setImage(Resources.Images.MainCharacter.CHARACTER_IDLE);
 			this.animationRunning.reset();
 		}
 		else if (this.state == State.RUNNING)
@@ -70,7 +70,7 @@ public class Protagonist extends Process
 		}
 		else if (this.state == State.JUMPING)
 		{
-			setImage(Resources.Images.Sprites.CHARACTER_JUMPING);
+			setImage(Resources.Images.MainCharacter.CHARACTER_JUMPING);
 			this.animationRunning.reset();
 		}
 	}
