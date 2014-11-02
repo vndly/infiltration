@@ -31,12 +31,24 @@ Tisp:
 	* Storyline like Meganoid. You can't play the next sublevel until you finish the current one
 	
 Building Escape: (collapsing)
-	Things falling from the cealing
-	fire from bottom, top, left and right
-	alienas shooting
-	electrified floor
-	falling in an elevator hole
-	floor breaks when standing
+	*Solid:
+	   - things falling from the ceiling
+	
+	* Electricity:
+	   - electrified cable hanging from the ceiling
+	   - electrified floor
+	
+	* Fire:
+	   - fire from bottom, top, left and right
+	
+	* Alien:
+	   - alien shooting
+	   - tentacle hanging from the ceiling
+	
+	* Fall:
+	   - falling in an elevator hole
+	   - floor breaks when standing
+	
 	https://www.youtube.com/watch?v=PYu9TckRNDU
 	
 Actions:
