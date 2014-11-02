@@ -17,13 +17,10 @@ public class Max extends Process
 	private boolean jumpingPressed = false;
 	
 	private static final float FRICTION = 0.6f;
-	
 	private static final int MAX_JUMP_SPEED = Level.BLOCK_SIZE * 18;
-	
 	private static final int MAX_FALL_SPEED = -Level.BLOCK_SIZE * 10;
 	private static final int GRAVITY = 5 * Max.MAX_FALL_SPEED;
-	
-	private static final int MAX_SPEED_X = Level.BLOCK_SIZE * 6; // number of blocks passed in 1 second
+	private static final int MAX_RUNNING_SPEED = Level.BLOCK_SIZE * 6;
 	
 	private enum State
 	{
@@ -86,11 +83,11 @@ public class Max extends Process
 		
 		if (this.acceleration.x > 0)
 		{
-			this.velocity.x = Max.MAX_SPEED_X;
+			this.velocity.x = Max.MAX_RUNNING_SPEED;
 		}
 		else if (this.acceleration.x < 0)
 		{
-			this.velocity.x = -Max.MAX_SPEED_X;
+			this.velocity.x = -Max.MAX_RUNNING_SPEED;
 		}
 		else if (this.acceleration.x == 0)
 		{
