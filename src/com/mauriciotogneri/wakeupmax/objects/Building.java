@@ -78,7 +78,7 @@ public class Building
 	public void checkTop(Max max)
 	{
 		Cell cellA = new Cell(max.x, max.y);
-		Cell cellB = new Cell(max.x, max.y);
+		Cell cellB = new Cell((max.x + max.width) - 1, max.y);
 		
 		if ((!checkCellTop(max, cellA)) && (!cellA.equals(cellB)))
 		{

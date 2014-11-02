@@ -33,8 +33,8 @@ public class Max extends Process
 		
 		this.building = building;
 		
-		this.x = Level.BLOCK_SIZE * 2; // 3
-		this.y = Level.BLOCK_SIZE * 3; // 10
+		this.x = Level.BLOCK_SIZE * 3;
+		this.y = Level.BLOCK_SIZE * 10;
 		this.z = 2;
 		
 		this.position.set(this.x, this.y);
