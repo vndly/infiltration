@@ -6,7 +6,7 @@ import com.misty.graphics.Animation;
 import com.misty.kernel.Process;
 import com.misty.math.Vector;
 
-public class Max extends Process
+public class Protagonist extends Process
 {
 	private final Building building;
 	private final Animation animationRunning;
@@ -19,7 +19,7 @@ public class Max extends Process
 	private static final float FRICTION = 0.6f;
 	private static final int MAX_JUMP_SPEED = Level.BLOCK_SIZE * 18;
 	private static final int MAX_FALL_SPEED = -Level.BLOCK_SIZE * 10;
-	private static final int GRAVITY = 5 * Max.MAX_FALL_SPEED;
+	private static final int GRAVITY = 5 * Protagonist.MAX_FALL_SPEED;
 	private static final int MAX_RUNNING_SPEED = Level.BLOCK_SIZE * 6;
 	
 	private enum State
@@ -27,7 +27,7 @@ public class Max extends Process
 		IDLE, RUNNING, JUMPING
 	}
 	
-	public Max(Building building)
+	public Protagonist(Building building)
 	{
 		super(false, true);
 		
@@ -77,21 +77,21 @@ public class Max extends Process
 	
 	private void updatePosition(float delta)
 	{
-		this.acceleration.y = Max.GRAVITY;
+		this.acceleration.y = Protagonist.GRAVITY;
 		this.acceleration.mul(delta);
 		this.velocity.add(this.acceleration);
 		
 		if (this.acceleration.x > 0)
 		{
-			this.velocity.x = Max.MAX_RUNNING_SPEED;
+			this.velocity.x = Protagonist.MAX_RUNNING_SPEED;
 		}
 		else if (this.acceleration.x < 0)
 		{
-			this.velocity.x = -Max.MAX_RUNNING_SPEED;
+			this.velocity.x = -Protagonist.MAX_RUNNING_SPEED;
 		}
 		else if (this.acceleration.x == 0)
 		{
-			this.velocity.x *= Max.FRICTION;
+			this.velocity.x *= Protagonist.FRICTION;
 			
 			// TODO: ADJUST LIMIT
 			if (Math.abs(this.velocity.x) < 1)
@@ -100,9 +100,9 @@ public class Max extends Process
 			}
 		}
 		
-		if (this.velocity.y < Max.MAX_FALL_SPEED)
+		if (this.velocity.y < Protagonist.MAX_FALL_SPEED)
 		{
-			this.velocity.y = Max.MAX_FALL_SPEED;
+			this.velocity.y = Protagonist.MAX_FALL_SPEED;
 		}
 		
 		this.position.add(this.velocity.copy().mul(delta));
@@ -170,7 +170,7 @@ public class Max extends Process
 				
 				this.jumpingPressed = true;
 				this.state = State.JUMPING;
-				this.velocity.y = Max.MAX_JUMP_SPEED;
+				this.velocity.y = Protagonist.MAX_JUMP_SPEED;
 			}
 		}
 		else

@@ -2,11 +2,12 @@ package com.mauriciotogneri.wakeupmax.objects;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import com.misty.kernel.Process;
 import com.misty.utils.Assets;
 
 public class Building
 {
-	private BuildingBlock[][] blocks;
+	private Block[][] blocks;
 	
 	public Building(String path)
 	{
@@ -17,7 +18,7 @@ public class Building
 			int width = json.getInt("width");
 			int height = json.getInt("height");
 			
-			this.blocks = new BuildingBlock[width][height];
+			this.blocks = new Block[width][height];
 			
 			JSONArray blocks = json.getJSONArray("blocks");
 			
@@ -37,148 +38,130 @@ public class Building
 		}
 	}
 	
-	private void addBlock(int i, int j)
+	private void addBlock(int x, int y)
 	{
-		BuildingBlock ground = new BuildingBlock(i * Level.BLOCK_SIZE, j * Level.BLOCK_SIZE);
-		ground.start();
-		
-		this.blocks[i][j] = ground;
+		this.blocks[x][y] = new Block(x * Level.BLOCK_SIZE, y * Level.BLOCK_SIZE);
 	}
 	
-	public void checkBottom(Max max)
+	public void checkBottom(Protagonist protagonist)
 	{
-		Cell cellA = new Cell(max.x, (max.y + max.height) - 1);
-		Cell cellB = new Cell((max.x + max.width) - 1, (max.y + max.height) - 1);
+		Block blockA = getBlock(protagonist.x, protagonist.y - 1);
+		Block blockB = getBlock(protagonist.x + protagonist.width - 1, protagonist.y - 1);
 		
-		if ((!checkCellBottom(max, cellA)) && (!cellA.equals(cellB)))
+		if ((!checkBlockBottom(protagonist, blockA)) && (blockA != blockB))
 		{
-			checkCellBottom(max, cellB);
+			checkBlockBottom(protagonist, blockB);
 		}
 	}
 	
-	private boolean checkCellBottom(Max max, Cell cell)
+	private boolean checkBlockBottom(Protagonist protagonist, Block block)
 	{
 		boolean result = false;
 		
-		if (getBlock(cell.i, cell.j) == null)
+		if ((block != null) && blocksIntersect(protagonist, block))
 		{
-			BuildingBlock blockBottom = getBlock(cell.i, cell.j - 1);
-			
-			if ((blockBottom != null) && blocksIntersect(max, blockBottom))
-			{
-				max.y = blockBottom.y + blockBottom.height;
-				max.touchGround();
-				result = true;
-			}
+			protagonist.y = block.y + block.height;
+			protagonist.touchGround();
+			result = true;
 		}
 		
 		return result;
 	}
 	
-	public void checkTop(Max max)
+	public void checkTop(Protagonist protagonist)
 	{
-		Cell cellA = new Cell(max.x, max.y);
-		Cell cellB = new Cell((max.x + max.width) - 1, max.y);
+		Block blockA = getBlock(protagonist.x, protagonist.y + protagonist.height);
+		Block blockB = getBlock(protagonist.x + protagonist.width - 1, protagonist.y + protagonist.height);
 		
-		if ((!checkCellTop(max, cellA)) && (!cellA.equals(cellB)))
+		if ((!checkBlockTop(protagonist, blockA)) && (blockA != blockB))
 		{
-			checkCellTop(max, cellB);
+			checkBlockTop(protagonist, blockB);
 		}
 	}
 	
-	private boolean checkCellTop(Max max, Cell cell)
+	private boolean checkBlockTop(Protagonist protagonist, Block block)
 	{
 		boolean result = false;
 		
-		if (getBlock(cell.i, cell.j) == null)
+		if ((block != null) && blocksIntersect(protagonist, block))
 		{
-			BuildingBlock blockTop = getBlock(cell.i, cell.j + 1);
-			
-			if ((blockTop != null) && blocksIntersect(max, blockTop))
-			{
-				max.y = blockTop.y - max.height;
-				max.touchCeiling();
-				result = true;
-			}
+			protagonist.y = block.y - protagonist.height;
+			protagonist.touchCeiling();
+			result = true;
 		}
 		
 		return result;
 	}
 	
-	public void checkLeft(Max max)
+	public void checkLeft(Protagonist protagonist)
 	{
-		Cell cellA = new Cell((max.x + max.width) - 1, (max.y + max.height) - 1);
-		Cell cellB = new Cell((max.x + max.width) - 1, max.y);
+		Block blockA = getBlock(protagonist.x - 1, protagonist.y);
+		Block blockB = getBlock(protagonist.x - 1, protagonist.y + protagonist.height - 1);
 		
-		if ((!checkCellLeft(max, cellA)) && (!cellA.equals(cellB)))
+		if ((!checkBlockLeft(protagonist, blockA)) && (blockA != blockB))
 		{
-			checkCellLeft(max, cellB);
+			checkBlockLeft(protagonist, blockB);
 		}
 	}
 	
-	private boolean checkCellLeft(Max max, Cell cell)
+	private boolean checkBlockLeft(Protagonist protagonist, Block block)
 	{
 		boolean result = false;
 		
-		if (getBlock(cell.i, cell.j) == null)
+		if ((block != null) && blocksIntersect(protagonist, block))
 		{
-			BuildingBlock blockLeft = getBlock(cell.i - 1, cell.j);
-			
-			if ((blockLeft != null) && blocksIntersect(max, blockLeft))
-			{
-				max.x = blockLeft.x + blockLeft.width;
-				result = true;
-			}
+			protagonist.x = block.x + block.width;
+			result = true;
 		}
 		
 		return result;
 	}
 	
-	public void checkRight(Max max)
+	public void checkRight(Protagonist protagonist)
 	{
-		Cell cellA = new Cell(max.x, (max.y + max.height) - 1);
-		Cell cellB = new Cell(max.x, max.y);
+		Block blockA = getBlock(protagonist.x + protagonist.width, protagonist.y);
+		Block blockB = getBlock(protagonist.x + protagonist.width, protagonist.y + protagonist.height - 1);
 		
-		if ((!checkCellRight(max, cellA)) && (!cellA.equals(cellB)))
+		if ((!checkBlockRight(protagonist, blockA)) && (blockA != blockB))
 		{
-			checkCellRight(max, cellB);
+			checkBlockRight(protagonist, blockB);
 		}
 	}
 	
-	private boolean checkCellRight(Max max, Cell cell)
+	private boolean checkBlockRight(Protagonist protagonist, Block block)
 	{
 		boolean result = false;
 		
-		if (getBlock(cell.i, cell.j) == null)
+		if ((block != null) && blocksIntersect(protagonist, block))
 		{
-			BuildingBlock blockRight = getBlock(cell.i + 1, cell.j);
-			
-			if ((blockRight != null) && blocksIntersect(max, blockRight))
-			{
-				max.x = blockRight.x - max.width;
-				result = true;
-			}
+			protagonist.x = block.x - protagonist.width;
+			result = true;
 		}
 		
 		return result;
 	}
 	
-	private boolean blocksIntersect(Max max, BuildingBlock block)
+	private boolean blocksIntersect(Process process, Block block)
 	{
-		boolean condition1 = (max.x + max.width) <= block.x;
-		boolean condition2 = (block.x + block.width) <= max.x;
-		boolean condition3 = (max.y + max.height) <= block.y;
-		boolean condition4 = (block.y + block.height) <= max.y;
+		boolean condition1 = (process.x + process.width) <= block.x;
+		boolean condition2 = (block.x + block.width) <= process.x;
+		boolean condition3 = (process.y + process.height) <= block.y;
+		boolean condition4 = (block.y + block.height) <= process.y;
+		
+		// block.intersects(process.getBounds());
 		
 		return ((!condition1) && (!condition2) && (!condition3) && (!condition4));
 	}
 	
-	private BuildingBlock getBlock(int i, int j)
+	private Block getBlock(float x, float y)
 	{
-		BuildingBlock result = null;
+		Block result = null;
 		
 		try
 		{
+			int i = (int)Math.floor(x / Level.BLOCK_SIZE);
+			int j = (int)Math.floor(y / Level.BLOCK_SIZE);
+			
 			result = this.blocks[i][j];
 		}
 		catch (Exception e)

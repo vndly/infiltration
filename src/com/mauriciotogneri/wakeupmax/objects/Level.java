@@ -5,7 +5,7 @@ import com.mauriciotogneri.wakeupmax.utils.Resources;
 
 public class Level
 {
-	private final Max max;
+	private final Protagonist max;
 	private final Background background;
 	
 	public static final int BLOCK_SIZE = 32;
@@ -17,7 +17,7 @@ public class Level
 		this.background = new Background(1, Resources.Images.Levels.LEVEL_1);
 		this.background.start();
 		
-		this.max = new Max(building);
+		this.max = new Protagonist(building);
 		this.max.start();
 	}
 	
