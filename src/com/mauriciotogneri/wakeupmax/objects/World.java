@@ -4,14 +4,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import com.mauriciotogneri.wakeupmax.utils.Resources;
 import com.misty.utils.Assets;
 
 public class World
 {
 	public static int BLOCK_SIZE = 32;
-	private static int WORLD_SIZE_X = 30;
-	private static int WORLD_SIZE_Y = 10;
+	private static int WORLD_SIZE_X = 21;
+	private static int WORLD_SIZE_Y = 14;
 	private final WorldBlock[][] blocks;
 	
 	public World()
@@ -32,14 +31,16 @@ public class World
 			
 			while ((line = reader.readLine()) != null)
 			{
-				String[] values = line.split(",");
-				
-				int i = Integer.parseInt(values[0]);
-				int j = Integer.parseInt(values[1]);
-				
-				addBlock(i, j, Resources.Images.Blocks.STONE);
+				if (!line.isEmpty())
+				{
+					String[] values = line.split(",");
+					
+					int i = Integer.parseInt(values[0]);
+					int j = Integer.parseInt(values[1]);
+					
+					addBlock(i, j);
+				}
 			}
-			
 		}
 		catch (IOException e)
 		{
@@ -102,9 +103,9 @@ public class World
 		// addBlock(20, 3, Resources.Images.Levels.GROUND_2);
 	}
 	
-	private void addBlock(int i, int j, String sprite)
+	private void addBlock(int i, int j)
 	{
-		WorldBlock ground = new WorldBlock(i * World.BLOCK_SIZE, j * World.BLOCK_SIZE, sprite);
+		WorldBlock ground = new WorldBlock(i * World.BLOCK_SIZE, j * World.BLOCK_SIZE, "images/levels/block.png");
 		ground.start();
 		this.blocks[i][j] = ground;
 	}

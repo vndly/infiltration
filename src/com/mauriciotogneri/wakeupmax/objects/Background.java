@@ -4,31 +4,12 @@ import com.misty.kernel.Process;
 
 public class Background extends Process
 {
-	private final int initialX;
-	private final int initialY;
-	private final int h;
-	private final int v;
-	
-	public Background(int x, int y, int z, int h, int v, String image)
+	public Background(int z, String image)
 	{
 		super(false, false);
 		
-		this.initialX = x * World.BLOCK_SIZE;
-		this.initialY = y * World.BLOCK_SIZE;
-		
-		this.x = this.initialX;
-		this.y = this.initialY;
 		this.z = z;
 		
-		this.h = h;
-		this.v = v;
-		
 		setImage(image);
-	}
-	
-	public void update()
-	{
-		this.x = this.camera.x - (this.camera.x / this.h) + this.initialX;
-		this.y = this.camera.y - (this.camera.y / this.v) + this.initialY;
 	}
 }

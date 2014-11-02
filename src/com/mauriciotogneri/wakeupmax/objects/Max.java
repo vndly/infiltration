@@ -35,8 +35,8 @@ public class Max extends Process
 		
 		this.world = world;
 		
-		this.x = World.BLOCK_SIZE * 6;
-		this.y = World.BLOCK_SIZE * 5;
+		this.x = World.BLOCK_SIZE * 3;
+		this.y = World.BLOCK_SIZE * 8;
 		this.z = 2;
 		
 		this.position.set(this.x, this.y);
@@ -223,11 +223,16 @@ public class Max extends Process
 			this.camera.x = 0;
 		}
 		
-		int limitX = 960 - getResolutionX();
+		int limitX = (21 * World.BLOCK_SIZE) - this.camera.width;
 		
 		if (this.camera.x > limitX)
 		{
 			this.camera.x = limitX;
+		}
+		
+		if (this.camera.y < 0)
+		{
+			this.camera.y = 0;
 		}
 	}
 }

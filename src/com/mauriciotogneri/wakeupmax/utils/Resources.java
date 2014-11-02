@@ -18,27 +18,18 @@ public class Resources
 			public static final String CHARACTER_RUNNING_4 = Sprites.ROOT + "running_4.png";
 		}
 		
-		public static class Backgrounds
+		public static class Levels
 		{
-			private static final String ROOT = Images.ROOT_IMAGES + "backgrounds/";
+			private static final String ROOT = Images.ROOT_IMAGES + "levels/";
 			
-			public static final String WALL = Backgrounds.ROOT + "wall.png";
-		}
-		
-		public static class Blocks
-		{
-			private static final String ROOT = Images.ROOT_IMAGES + "blocks/";
-			
-			public static final String STONE = Blocks.ROOT + "stone.png";
+			public static final String LEVEL_1 = Levels.ROOT + "level_1.png";
 		}
 		
 		public static class Controls
 		{
 			private static final String ROOT = Images.ROOT_IMAGES + "controls/";
 			
-			public static final String ARROW_LEFT = Controls.ROOT + "arrow_left.png";
-			public static final String ARROW_RIGHT = Controls.ROOT + "arrow_right.png";
-			public static final String ARROW_UP = Controls.ROOT + "arrow_up.png";
+			public static final String ARROW = Controls.ROOT + "arrow.png";
 		}
 	}
 	
