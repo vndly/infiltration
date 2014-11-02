@@ -14,6 +14,7 @@ public class Protagonist extends Process
 	private final Vector acceleration = new Vector();
 	private final Vector velocity = new Vector();
 	private State state = State.IDLE;
+	
 	private boolean jumpingPressed = false;
 	
 	private static final float FRICTION = 0.6f;
