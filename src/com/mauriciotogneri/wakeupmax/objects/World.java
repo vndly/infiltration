@@ -50,57 +50,6 @@ public class World
 		{
 			Assets.close(inputstream);
 		}
-		
-		// for (int i = 0; i < 32; i++)
-		// {
-		// for (int j = 0; j < 2; j++)
-		// {
-		// addBlock(i, j, Resources.Images.Levels.GROUND_1);
-		// }
-		// }
-		//
-		// for (int i = 0; i < 32; i++)
-		// {
-		// addBlock(i, 2, Resources.Images.Levels.GROUND_2);
-		// }
-		
-		// addBlock(6, 3, Resources.Images.Levels.GROUND_1);
-		// addBlock(7, 3, Resources.Images.Levels.GROUND_1);
-		// addBlock(8, 3, Resources.Images.Levels.GROUND_1);
-		// addBlock(6, 4, Resources.Images.Levels.GROUND_2);
-		// addBlock(7, 4, Resources.Images.Levels.GROUND_2);
-		// addBlock(8, 4, Resources.Images.Levels.GROUND_2);
-		//
-		// addBlock(23, 3, Resources.Images.Levels.GROUND_2);
-		// addBlock(24, 4, Resources.Images.Levels.GROUND_2);
-		// addBlock(25, 3, Resources.Images.Levels.GROUND_2);
-		// addBlock(24, 3, Resources.Images.Levels.GROUND_1);
-		//
-		// addBlock(14, 3, Resources.Images.Levels.GROUND_2);
-		//
-		// addBlock(15, 3, Resources.Images.Levels.GROUND_1);
-		// addBlock(15, 4, Resources.Images.Levels.GROUND_2);
-		//
-		// addBlock(16, 3, Resources.Images.Levels.GROUND_1);
-		// addBlock(16, 4, Resources.Images.Levels.GROUND_1);
-		// addBlock(16, 5, Resources.Images.Levels.GROUND_2);
-		//
-		// addBlock(17, 3, Resources.Images.Levels.GROUND_1);
-		// addBlock(17, 4, Resources.Images.Levels.GROUND_1);
-		// addBlock(17, 5, Resources.Images.Levels.GROUND_1);
-		// addBlock(17, 6, Resources.Images.Levels.GROUND_2);
-		//
-		// addBlock(18, 3, Resources.Images.Levels.GROUND_1);
-		// addBlock(18, 4, Resources.Images.Levels.GROUND_1);
-		// addBlock(18, 5, Resources.Images.Levels.GROUND_1);
-		// addBlock(18, 6, Resources.Images.Levels.GROUND_1);
-		// addBlock(18, 7, Resources.Images.Levels.GROUND_2);
-		//
-		// addBlock(19, 3, Resources.Images.Levels.GROUND_1);
-		// addBlock(19, 4, Resources.Images.Levels.GROUND_1);
-		// addBlock(19, 5, Resources.Images.Levels.GROUND_2);
-		//
-		// addBlock(20, 3, Resources.Images.Levels.GROUND_2);
 	}
 	
 	private void addBlock(int i, int j)

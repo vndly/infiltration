@@ -9,9 +9,7 @@ import com.misty.math.Vector;
 public class Max extends Process
 {
 	private final World world;
-	
 	private final Animation animationRunning;
-	
 	private final Vector position = new Vector();
 	private final Vector acceleration = new Vector();
 	private final Vector velocity = new Vector();
