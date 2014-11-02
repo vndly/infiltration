@@ -6,7 +6,7 @@ public class Button extends Process
 {
 	public static final int SIZE = 64;
 	
-	public Button(int x, int y, float angle, String image)
+	public Button(float x, float y, float angle, String image)
 	{
 		super(false, false);
 		

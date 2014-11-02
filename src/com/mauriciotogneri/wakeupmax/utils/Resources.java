@@ -6,16 +6,16 @@ public class Resources
 	{
 		private static final String ROOT_IMAGES = "images/";
 		
-		public static class MainCharacter
+		public static class Protagonist
 		{
 			private static final String ROOT = Images.ROOT_IMAGES + "sprites/";
 			
-			public static final String CHARACTER_IDLE = MainCharacter.ROOT + "idle.png";
-			public static final String CHARACTER_JUMPING = MainCharacter.ROOT + "jumping.png";
-			public static final String CHARACTER_RUNNING_1 = MainCharacter.ROOT + "running_1.png";
-			public static final String CHARACTER_RUNNING_2 = MainCharacter.ROOT + "running_2.png";
-			public static final String CHARACTER_RUNNING_3 = MainCharacter.ROOT + "running_3.png";
-			public static final String CHARACTER_RUNNING_4 = MainCharacter.ROOT + "running_4.png";
+			public static final String CHARACTER_IDLE = Protagonist.ROOT + "idle.png";
+			public static final String CHARACTER_JUMPING = Protagonist.ROOT + "jumping.png";
+			public static final String CHARACTER_RUNNING_1 = Protagonist.ROOT + "running_1.png";
+			public static final String CHARACTER_RUNNING_2 = Protagonist.ROOT + "running_2.png";
+			public static final String CHARACTER_RUNNING_3 = Protagonist.ROOT + "running_3.png";
+			public static final String CHARACTER_RUNNING_4 = Protagonist.ROOT + "running_4.png";
 		}
 		
 		public static class Levels

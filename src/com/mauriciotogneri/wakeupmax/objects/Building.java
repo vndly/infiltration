@@ -65,7 +65,7 @@ public class Building extends Process
 	{
 		boolean result = false;
 		
-		if ((block != null) && blocksIntersect(protagonist, block))
+		if ((block != null) && block.intersects(protagonist.getBounds()))
 		{
 			protagonist.y = block.y + block.height;
 			protagonist.touchGround();
@@ -90,7 +90,7 @@ public class Building extends Process
 	{
 		boolean result = false;
 		
-		if ((block != null) && blocksIntersect(protagonist, block))
+		if ((block != null) && block.intersects(protagonist.getBounds()))
 		{
 			protagonist.y = block.y - protagonist.height;
 			protagonist.touchCeiling();
@@ -115,7 +115,7 @@ public class Building extends Process
 	{
 		boolean result = false;
 		
-		if ((block != null) && blocksIntersect(protagonist, block))
+		if ((block != null) && block.intersects(protagonist.getBounds()))
 		{
 			protagonist.x = block.x + block.width;
 			result = true;
@@ -139,25 +139,13 @@ public class Building extends Process
 	{
 		boolean result = false;
 		
-		if ((block != null) && blocksIntersect(protagonist, block))
+		if ((block != null) && block.intersects(protagonist.getBounds()))
 		{
 			protagonist.x = block.x - protagonist.width;
 			result = true;
 		}
 		
 		return result;
-	}
-	
-	private boolean blocksIntersect(Process process, Rectangle block)
-	{
-		boolean condition1 = (process.x + process.width) <= block.x;
-		boolean condition2 = (block.x + block.width) <= process.x;
-		boolean condition3 = (process.y + process.height) <= block.y;
-		boolean condition4 = (block.y + block.height) <= process.y;
-		
-		// block.intersects(process.getBounds());
-		
-		return ((!condition1) && (!condition2) && (!condition3) && (!condition4));
 	}
 	
 	private Rectangle getBlock(float x, float y)
