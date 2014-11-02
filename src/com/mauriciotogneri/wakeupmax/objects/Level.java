@@ -10,7 +10,7 @@ public class Level
 	
 	public Level()
 	{
-		Building building = new Building("maps/map_1.txt");
+		Building building = new Building(Resources.Levels.LEVEL_1);
 		
 		this.background = new Background(1, Resources.Images.Levels.LEVEL_1);
 		this.background.start();

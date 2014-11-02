@@ -166,7 +166,7 @@ public class Max extends Process
 		{
 			if ((!this.jumpingPressed) && (this.state != State.JUMPING))
 			{
-				playSound(Resources.Sound.JUMP);
+				playSound(Resources.Audio.Sound.JUMP);
 				
 				this.jumpingPressed = true;
 				this.state = State.JUMPING;

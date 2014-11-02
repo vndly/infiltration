@@ -17,7 +17,7 @@ public class Game extends Process
 		this.controls = new Controls();
 		this.currentLevel = new Level();
 		
-		playMusic(Resources.Music.MUSIC);
+		playMusic(Resources.Audio.Music.MUSIC);
 	}
 	
 	@Override

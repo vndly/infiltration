@@ -33,17 +33,29 @@ public class Resources
 		}
 	}
 	
-	public static class Music
+	public static class Levels
 	{
-		private static final String ROOT = "audio/music/";
+		private static final String ROOT = "levels/";
 		
-		public static final String MUSIC = Music.ROOT + "music.ogg";
+		public static final String LEVEL_1 = Levels.ROOT + "level_1.txt";
 	}
 	
-	public static class Sound
+	public static class Audio
 	{
-		private static final String ROOT = "audio/sounds/";
+		private static final String ROOT_AUDIO = "audio/";
 		
-		public static final String JUMP = Sound.ROOT + "jump.ogg";
+		public static class Music
+		{
+			private static final String ROOT = Audio.ROOT_AUDIO + "music/";
+			
+			public static final String MUSIC = Music.ROOT + "music.ogg";
+		}
+		
+		public static class Sound
+		{
+			private static final String ROOT = Audio.ROOT_AUDIO + "sounds/";
+			
+			public static final String JUMP = Sound.ROOT + "jump.ogg";
+		}
 	}
 }
