@@ -26,9 +26,9 @@ Games:
 
 Tisp:
 	* Have an animated background (like the leafs of the trees moving because of the wind)
+	* Animations:
+	   - drops falling from the ceiling
 	* The sun is smiling and following you with his eyes
-	* Surround everything with a black thick silhouette (Doodle Jump)
-	* Storyline like Meganoid. You can't play the next sublevel until you finish the current one
 	
 Building Escape: (collapsing)
 	*Solid:
@@ -50,12 +50,6 @@ Building Escape: (collapsing)
 	   - floor breaks when standing
 	
 	https://www.youtube.com/watch?v=PYu9TckRNDU
-	
-Actions:
-	* Jump
-	* Crawl
-	* Shoot
-	* Slow down
 
 Game Document Design:
 	* Story
@@ -66,7 +60,8 @@ Game Document Design:
 	* Sound and Music
 	* User Interface, Game Controls
 
-Story:
+Stories:
+    * A guy who works in the floor 100 of a building has to escape from it because the aliens are attacking it!
 	* A guy is trapped in his own dream. He has to pass all the levels in order to wake up. In total 10 levels with 10 sublevels each one.
 	  Each sublevel consists in walk from left to right and reach the portal that will take you to the next sublevel.
 	* Two monkeys live in the jungle. One day some guys steal the female monkey. Then the male monkey start to run to rescue her.
@@ -100,7 +95,3 @@ Levels:
 	* Moon
 	* Sewers
 	* Fantasy
-
-Items to catch:
-	* extra time
-	* extra health
