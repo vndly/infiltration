@@ -7,8 +7,8 @@ public class Cell
 
 	public Cell(float x, float y)
 	{
-		this.i = (int)Math.floor(x / World.BLOCK_SIZE);
-		this.j = (int)Math.floor(y / World.BLOCK_SIZE);
+		this.i = (int)Math.floor(x / Building.BLOCK_SIZE);
+		this.j = (int)Math.floor(y / Building.BLOCK_SIZE);
 	}
 
 	public boolean equals(Cell cell)

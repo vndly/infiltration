@@ -8,7 +8,7 @@ import com.misty.math.Vector;
 
 public class Max extends Process
 {
-	private final World world;
+	private final Building building;
 	private final Animation animationRunning;
 	private final Vector position = new Vector();
 	private final Vector acceleration = new Vector();
@@ -17,24 +17,24 @@ public class Max extends Process
 	private boolean jumpingPressed = false;
 	
 	private static final float FRICTION = 0.6f;
-	private static final int GRAVITY = -World.BLOCK_SIZE * 50;
-	private static final int MAX_JUMP_SPEED = World.BLOCK_SIZE * 18;
-	private static final int MAX_FALL_SPEED = -World.BLOCK_SIZE * 10;
-	private static final int MAX_SPEED_X = World.BLOCK_SIZE * 6; // number of blocks passed in 1 second
+	private static final int GRAVITY = -Building.BLOCK_SIZE * 50;
+	private static final int MAX_JUMP_SPEED = Building.BLOCK_SIZE * 18;
+	private static final int MAX_FALL_SPEED = -Building.BLOCK_SIZE * 10;
+	private static final int MAX_SPEED_X = Building.BLOCK_SIZE * 6; // number of blocks passed in 1 second
 	
 	private enum State
 	{
 		IDLE, RUNNING, JUMPING
 	}
 	
-	public Max(World world)
+	public Max(Building building)
 	{
 		super(false, true);
 		
-		this.world = world;
+		this.building = building;
 		
-		this.x = World.BLOCK_SIZE * 3;
-		this.y = World.BLOCK_SIZE * 10;
+		this.x = Building.BLOCK_SIZE * 3;
+		this.y = Building.BLOCK_SIZE * 10;
 		this.z = 2;
 		
 		this.position.set(this.x, this.y);
@@ -132,12 +132,12 @@ public class Max extends Process
 			
 			if (this.velocity.x < 0)
 			{
-				this.world.checkLeft(this);
+				this.building.checkLeft(this);
 			}
 			
 			if (this.velocity.x > 0)
 			{
-				this.world.checkRight(this);
+				this.building.checkRight(this);
 			}
 		}
 		
@@ -147,12 +147,12 @@ public class Max extends Process
 			
 			if (this.velocity.y <= 0)
 			{
-				this.world.checkBottom(this);
+				this.building.checkBottom(this);
 			}
 			
 			if (this.velocity.y > 0)
 			{
-				this.world.checkTop(this);
+				this.building.checkTop(this);
 			}
 		}
 		
@@ -221,7 +221,7 @@ public class Max extends Process
 			this.camera.x = 0;
 		}
 		
-		int limitX = (21 * World.BLOCK_SIZE) - this.camera.width;
+		int limitX = (21 * Building.BLOCK_SIZE) - this.camera.width;
 		
 		if (this.camera.x > limitX)
 		{

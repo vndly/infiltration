@@ -2,9 +2,9 @@ package com.mauriciotogneri.wakeupmax.objects;
 
 import com.misty.kernel.Process;
 
-public class WorldBlock extends Process
+public class BuildingBlock extends Process
 {
-	public WorldBlock(int x, int y)
+	public BuildingBlock(int x, int y)
 	{
 		super(false, false);
 		

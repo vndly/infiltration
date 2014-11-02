@@ -10,13 +10,12 @@ public class Level
 	
 	public Level()
 	{
-		World world = new World();
-		world.create("maps/map_1.txt");
+		Building building = new Building("maps/map_1.txt");
 		
 		this.background = new Background(1, Resources.Images.Levels.LEVEL_1);
 		this.background.start();
 		
-		this.max = new Max(world);
+		this.max = new Max(building);
 		this.max.start();
 	}
 	

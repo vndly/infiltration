@@ -6,19 +6,21 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import com.misty.utils.Assets;
 
-public class World
+public class Building
 {
 	public static int BLOCK_SIZE = 32;
-	private static int WORLD_SIZE_X = 21;
-	private static int WORLD_SIZE_Y = 16;
-	private final WorldBlock[][] blocks;
+	private static int BUILDING_SIZE_X = 21;
+	private static int BUILDING_SIZE_Y = 16;
+	private final BuildingBlock[][] blocks;
 	
-	public World()
+	public Building(String path)
 	{
-		this.blocks = new WorldBlock[World.WORLD_SIZE_X][World.WORLD_SIZE_Y];
+		this.blocks = new BuildingBlock[Building.BUILDING_SIZE_X][Building.BUILDING_SIZE_Y];
+		
+		fillBlocks(path);
 	}
 	
-	public void create(String path)
+	private void fillBlocks(String path)
 	{
 		InputStream inputstream = null;
 		
@@ -54,7 +56,7 @@ public class World
 	
 	private void addBlock(int i, int j)
 	{
-		WorldBlock ground = new WorldBlock(i * World.BLOCK_SIZE, j * World.BLOCK_SIZE);
+		BuildingBlock ground = new BuildingBlock(i * Building.BLOCK_SIZE, j * Building.BLOCK_SIZE);
 		ground.start();
 		this.blocks[i][j] = ground;
 	}
@@ -76,7 +78,7 @@ public class World
 		
 		if (getBlock(cell.i, cell.j) == null)
 		{
-			WorldBlock blockBottom = getBlock(cell.i, cell.j - 1);
+			BuildingBlock blockBottom = getBlock(cell.i, cell.j - 1);
 			
 			if ((blockBottom != null) && blocksIntersect(max, blockBottom))
 			{
@@ -106,7 +108,7 @@ public class World
 		
 		if (getBlock(cell.i, cell.j) == null)
 		{
-			WorldBlock blockTop = getBlock(cell.i, cell.j + 1);
+			BuildingBlock blockTop = getBlock(cell.i, cell.j + 1);
 			
 			if ((blockTop != null) && blocksIntersect(max, blockTop))
 			{
@@ -136,7 +138,7 @@ public class World
 		
 		if (getBlock(cell.i, cell.j) == null)
 		{
-			WorldBlock blockLeft = getBlock(cell.i - 1, cell.j);
+			BuildingBlock blockLeft = getBlock(cell.i - 1, cell.j);
 			
 			if ((blockLeft != null) && blocksIntersect(max, blockLeft))
 			{
@@ -165,7 +167,7 @@ public class World
 		
 		if (getBlock(cell.i, cell.j) == null)
 		{
-			WorldBlock blockRight = getBlock(cell.i + 1, cell.j);
+			BuildingBlock blockRight = getBlock(cell.i + 1, cell.j);
 			
 			if ((blockRight != null) && blocksIntersect(max, blockRight))
 			{
@@ -177,7 +179,7 @@ public class World
 		return result;
 	}
 	
-	private boolean blocksIntersect(Max max, WorldBlock block)
+	private boolean blocksIntersect(Max max, BuildingBlock block)
 	{
 		boolean condition1 = (max.x + max.width) <= block.x;
 		boolean condition2 = (block.x + block.width) <= max.x;
@@ -187,9 +189,9 @@ public class World
 		return ((!condition1) && (!condition2) && (!condition3) && (!condition4));
 	}
 	
-	private WorldBlock getBlock(int i, int j)
+	private BuildingBlock getBlock(int i, int j)
 	{
-		WorldBlock result = null;
+		BuildingBlock result = null;
 		
 		try
 		{
