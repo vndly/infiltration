@@ -1,56 +1,40 @@
 package com.mauriciotogneri.wakeupmax.objects;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import com.misty.utils.Assets;
 
 public class Building
 {
 	public static int BLOCK_SIZE = 32;
-	private static int BUILDING_SIZE_X = 21;
-	private static int BUILDING_SIZE_Y = 16;
-	private final BuildingBlock[][] blocks;
+	private BuildingBlock[][] blocks;
 	
 	public Building(String path)
 	{
-		this.blocks = new BuildingBlock[Building.BUILDING_SIZE_X][Building.BUILDING_SIZE_Y];
-		
-		fillBlocks(path);
-	}
-	
-	private void fillBlocks(String path)
-	{
-		InputStream inputstream = null;
-		
 		try
 		{
-			inputstream = Assets.getInputStream(path);
+			JSONObject json = Assets.getJsonObject(path);
 			
-			BufferedReader reader = new BufferedReader(new InputStreamReader(inputstream));
-			String line = "";
+			int width = json.getInt("width");
+			int height = json.getInt("height");
 			
-			while ((line = reader.readLine()) != null)
+			this.blocks = new BuildingBlock[width][height];
+			
+			JSONArray blocks = json.getJSONArray("blocks");
+			
+			for (int i = 0; i < blocks.length(); i++)
 			{
-				if (!line.isEmpty())
-				{
-					String[] values = line.split(",");
-					
-					int i = Integer.parseInt(values[0]);
-					int j = Integer.parseInt(values[1]);
-					
-					addBlock(i, j);
-				}
+				JSONObject block = blocks.getJSONObject(i);
+				
+				int x = block.getInt("x");
+				int y = block.getInt("y");
+				
+				addBlock(x, y);
 			}
 		}
-		catch (IOException e)
+		catch (Exception e)
 		{
 			e.printStackTrace();
-		}
-		finally
-		{
-			Assets.close(inputstream);
 		}
 	}
 	
