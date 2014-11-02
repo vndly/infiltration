@@ -10,7 +10,7 @@ public class World
 {
 	public static int BLOCK_SIZE = 32;
 	private static int WORLD_SIZE_X = 21;
-	private static int WORLD_SIZE_Y = 14;
+	private static int WORLD_SIZE_Y = 16;
 	private final WorldBlock[][] blocks;
 	
 	public World()
@@ -105,7 +105,7 @@ public class World
 	
 	private void addBlock(int i, int j)
 	{
-		WorldBlock ground = new WorldBlock(i * World.BLOCK_SIZE, j * World.BLOCK_SIZE, "images/levels/block.png");
+		WorldBlock ground = new WorldBlock(i * World.BLOCK_SIZE, j * World.BLOCK_SIZE);
 		ground.start();
 		this.blocks[i][j] = ground;
 	}

@@ -36,7 +36,7 @@ public class Max extends Process
 		this.world = world;
 		
 		this.x = World.BLOCK_SIZE * 3;
-		this.y = World.BLOCK_SIZE * 8;
+		this.y = World.BLOCK_SIZE * 10;
 		this.z = 2;
 		
 		this.position.set(this.x, this.y);

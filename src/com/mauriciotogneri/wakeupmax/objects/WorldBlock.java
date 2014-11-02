@@ -4,7 +4,7 @@ import com.misty.kernel.Process;
 
 public class WorldBlock extends Process
 {
-	public WorldBlock(int x, int y, String image)
+	public WorldBlock(int x, int y)
 	{
 		super(false, false);
 		
@@ -12,6 +12,6 @@ public class WorldBlock extends Process
 		this.y = y;
 		this.z = 2;
 		
-		setImage(image);
+		setImage("images/levels/block.png");
 	}
 }
