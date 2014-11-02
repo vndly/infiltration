@@ -17,10 +17,10 @@ public class Max extends Process
 	private boolean jumpingPressed = false;
 	
 	private static final float FRICTION = 0.6f;
-	private static final int GRAVITY = -Building.BLOCK_SIZE * 50;
-	private static final int MAX_JUMP_SPEED = Building.BLOCK_SIZE * 18;
-	private static final int MAX_FALL_SPEED = -Building.BLOCK_SIZE * 10;
-	private static final int MAX_SPEED_X = Building.BLOCK_SIZE * 6; // number of blocks passed in 1 second
+	private static final int GRAVITY = -Level.BLOCK_SIZE * 50;
+	private static final int MAX_JUMP_SPEED = Level.BLOCK_SIZE * 18;
+	private static final int MAX_FALL_SPEED = -Level.BLOCK_SIZE * 10;
+	private static final int MAX_SPEED_X = Level.BLOCK_SIZE * 6; // number of blocks passed in 1 second
 	
 	private enum State
 	{
@@ -33,8 +33,8 @@ public class Max extends Process
 		
 		this.building = building;
 		
-		this.x = Building.BLOCK_SIZE * 3;
-		this.y = Building.BLOCK_SIZE * 10;
+		this.x = Level.BLOCK_SIZE * 3;
+		this.y = Level.BLOCK_SIZE * 10;
 		this.z = 2;
 		
 		this.position.set(this.x, this.y);
@@ -221,7 +221,7 @@ public class Max extends Process
 			this.camera.x = 0;
 		}
 		
-		int limitX = (21 * Building.BLOCK_SIZE) - this.camera.width;
+		int limitX = (21 * Level.BLOCK_SIZE) - this.camera.width;
 		
 		if (this.camera.x > limitX)
 		{

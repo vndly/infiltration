@@ -8,6 +8,8 @@ public class Level
 	private final Max max;
 	private final Background background;
 	
+	public static final int BLOCK_SIZE = 32;
+	
 	public Level()
 	{
 		Building building = new Building(Resources.Levels.LEVEL_1);

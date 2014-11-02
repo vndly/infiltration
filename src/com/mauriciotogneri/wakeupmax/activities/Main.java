@@ -1,13 +1,13 @@
 package com.mauriciotogneri.wakeupmax.activities;
 
-import com.mauriciotogneri.wakeupmax.objects.Building;
 import com.mauriciotogneri.wakeupmax.objects.Game;
+import com.mauriciotogneri.wakeupmax.objects.Level;
 import com.misty.graphics.ScreenResolution;
 import com.misty.kernel.Misty;
 
 public class Main extends Misty
 {
-	public static int RESOLUTION_X = 17 * Building.BLOCK_SIZE;
+	public static final int RESOLUTION_X = 17 * Level.BLOCK_SIZE;
 	
 	// public static int RESOLUTION_Y = 10 * Building.BLOCK_SIZE;
 	

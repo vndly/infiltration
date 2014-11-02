@@ -6,7 +6,6 @@ import com.misty.utils.Assets;
 
 public class Building
 {
-	public static int BLOCK_SIZE = 32;
 	private BuildingBlock[][] blocks;
 	
 	public Building(String path)
@@ -40,8 +39,9 @@ public class Building
 	
 	private void addBlock(int i, int j)
 	{
-		BuildingBlock ground = new BuildingBlock(i * Building.BLOCK_SIZE, j * Building.BLOCK_SIZE);
+		BuildingBlock ground = new BuildingBlock(i * Level.BLOCK_SIZE, j * Level.BLOCK_SIZE);
 		ground.start();
+		
 		this.blocks[i][j] = ground;
 	}
 	
