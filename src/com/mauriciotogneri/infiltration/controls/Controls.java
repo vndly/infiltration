@@ -16,7 +16,7 @@ public class Controls
 		this.buttonLeft = new Button(10, 10, 90, Resources.Images.Controls.ARROW);
 		this.buttonLeft.start();
 		
-		this.buttonRight = new Button(this.buttonLeft.x + Button.SIZE + 20, 10, -90, Resources.Images.Controls.ARROW);
+		this.buttonRight = new Button(this.buttonLeft.x + Button.SIZE + 30, 10, -90, Resources.Images.Controls.ARROW);
 		this.buttonRight.start();
 		
 		this.buttonUp = new Button(Main.RESOLUTION_X - Button.SIZE - 10, 10, 0, Resources.Images.Controls.ARROW);
