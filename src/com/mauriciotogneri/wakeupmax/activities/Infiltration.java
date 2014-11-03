@@ -3,7 +3,7 @@ package com.mauriciotogneri.wakeupmax.activities;
 import android.app.Application;
 import android.os.StrictMode;
 
-public class WakeUpMax extends Application
+public class Infiltration extends Application
 {
 	@Override
 	public void onCreate()
