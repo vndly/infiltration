@@ -34,8 +34,8 @@ public class Protagonist extends Process
 		
 		this.building = building;
 		
-		this.x = Level.BLOCK_SIZE * 3;
-		this.y = Level.BLOCK_SIZE * 10;
+		this.x = Level.BLOCK_SIZE * 28;
+		this.y = Level.BLOCK_SIZE * 15;
 		this.z = 2;
 		
 		this.position.set(this.x, this.y);
@@ -54,8 +54,6 @@ public class Protagonist extends Process
 		checkPosition();
 		
 		setSprite(delta);
-		
-		updateCamera();
 	}
 	
 	private void setSprite(float delta)
@@ -209,29 +207,6 @@ public class Protagonist extends Process
 			}
 			
 			this.acceleration.x = 0;
-		}
-	}
-	
-	private void updateCamera()
-	{
-		this.camera.x = (this.x - (getResolutionX() / 2)) + this.width;
-		this.camera.y = (this.y - (getResolutionY() / 2)) + this.height;
-		
-		if (this.camera.x < 0)
-		{
-			this.camera.x = 0;
-		}
-		
-		int limitX = (21 * Level.BLOCK_SIZE) - this.camera.width;
-		
-		if (this.camera.x > limitX)
-		{
-			this.camera.x = limitX;
-		}
-		
-		if (this.camera.y < 0)
-		{
-			this.camera.y = 0;
 		}
 	}
 }

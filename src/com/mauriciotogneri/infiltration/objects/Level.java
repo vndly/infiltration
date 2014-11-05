@@ -6,6 +6,7 @@ import com.mauriciotogneri.infiltration.utils.Resources;
 public class Level
 {
 	private final Protagonist max;
+	private final ViewPoint viewPoint;
 	
 	public static final int BLOCK_SIZE = 32;
 	
@@ -14,6 +15,9 @@ public class Level
 		Building building = new Building(Resources.Levels.LEVEL_1, 1, Resources.Images.Levels.LEVEL_1);
 		building.start();
 		
+		this.viewPoint = new ViewPoint((building.getWidth() + 1) * Level.BLOCK_SIZE);
+		this.viewPoint.start();
+		
 		this.max = new Protagonist(building);
 		this.max.start();
 	}
@@ -21,5 +25,6 @@ public class Level
 	public void update(float delta, Input input)
 	{
 		this.max.update(delta, input);
+		this.viewPoint.update(this.max);
 	}
 }

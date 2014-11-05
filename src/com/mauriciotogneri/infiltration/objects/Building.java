@@ -8,6 +8,8 @@ import com.misty.utils.Assets;
 
 public class Building extends Process
 {
+	private int mapWidth = 0;
+	private int mapHeight = 0;
 	private Rectangle[][] blocks;
 	
 	public Building(String path, int z, String image)
@@ -22,10 +24,10 @@ public class Building extends Process
 		{
 			JSONObject json = Assets.getJsonObject(path);
 			
-			int width = json.getInt("width");
-			int height = json.getInt("height");
+			this.mapWidth = json.getInt("width");
+			this.mapHeight = json.getInt("height");
 			
-			this.blocks = new Rectangle[width][height];
+			this.blocks = new Rectangle[this.width][this.height];
 			
 			JSONArray blocks = json.getJSONArray("blocks");
 			
@@ -45,9 +47,22 @@ public class Building extends Process
 		}
 	}
 	
+	public int getWidth()
+	{
+		return this.mapWidth;
+	}
+	
+	public int getHeight()
+	{
+		return this.mapHeight;
+	}
+	
 	private void addBlock(int x, int y)
 	{
 		this.blocks[x][y] = new Rectangle(x * Level.BLOCK_SIZE, y * Level.BLOCK_SIZE, Level.BLOCK_SIZE, Level.BLOCK_SIZE);
+		
+		// Block block = new Block(x * Level.BLOCK_SIZE, y * Level.BLOCK_SIZE);
+		// block.start();
 	}
 	
 	public void checkBottom(Protagonist protagonist)
