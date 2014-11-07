@@ -6,6 +6,7 @@ import com.mauriciotogneri.infiltration.utils.Resources;
 
 public class Level
 {
+	private final Building building;
 	private final Protagonist max;
 	private final ViewPoint viewPoint;
 	private final Laser laser;
@@ -14,16 +15,18 @@ public class Level
 	
 	public Level()
 	{
-		Building building = new Building(Resources.Levels.LEVEL_1, Resources.Images.Levels.LEVEL_1);
-		building.start();
+		this.building = new Building(Resources.Levels.LEVEL_1, Resources.Images.Levels.LEVEL_1);
+		this.building.start();
 		
-		this.viewPoint = new ViewPoint((building.getWidth() + 1) * Level.BLOCK_SIZE);
+		this.viewPoint = new ViewPoint((this.building.getWidth() + 1) * Level.BLOCK_SIZE);
 		this.viewPoint.start();
 		
-		this.max = new Protagonist(building);
+		this.max = new Protagonist(this, this.building);
 		this.max.start();
 		
 		this.laser = new Laser(Level.BLOCK_SIZE * 19, Level.BLOCK_SIZE * 13, 2, 1000, 2000, true);
+		
+		reset();
 	}
 	
 	public void update(float delta, Input input)
@@ -35,5 +38,13 @@ public class Level
 	public void reset()
 	{
 		// TODO
+		this.max.reset();
+	}
+	
+	public void stop()
+	{
+		// TODO
+		
+		this.laser.stop();
 	}
 }

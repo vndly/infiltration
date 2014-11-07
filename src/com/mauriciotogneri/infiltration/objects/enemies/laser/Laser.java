@@ -25,4 +25,15 @@ public class Laser
 			this.beams.add(beam);
 		}
 	}
+	
+	public void stop()
+	{
+		this.baseBottom.finish();
+		this.baseTop.finish();
+		
+		for (LaserBeam beam : this.beams)
+		{
+			beam.finish();
+		}
+	}
 }

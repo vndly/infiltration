@@ -2,7 +2,7 @@ package com.mauriciotogneri.infiltration.objects;
 
 import java.util.List;
 import com.mauriciotogneri.infiltration.controls.Input;
-import com.mauriciotogneri.infiltration.objects.enemies.laser.Laser;
+import com.mauriciotogneri.infiltration.objects.enemies.laser.LaserBeam;
 import com.mauriciotogneri.infiltration.utils.Resources;
 import com.misty.graphics.Animation;
 import com.misty.kernel.Process;
@@ -10,6 +10,7 @@ import com.misty.math.Vector;
 
 public class Protagonist extends Process
 {
+	private final Level level;
 	private final Building building;
 	private final Animation animationRunning;
 	private final Vector position = new Vector();
@@ -25,21 +26,30 @@ public class Protagonist extends Process
 	private static final int GRAVITY = 5 * Protagonist.MAX_FALL_SPEED;
 	private static final int MAX_RUNNING_SPEED = Level.BLOCK_SIZE * 6;
 	
-	public Protagonist(Building building)
+	public Protagonist(Level level, Building building)
 	{
 		super(false, true);
 		
+		this.level = level;
 		this.building = building;
 		
+		this.z = 2;
+		
+		this.animationRunning = new Animation(0.05f, Resources.Images.Protagonist.CHARACTER_RUNNING_1, Resources.Images.Protagonist.CHARACTER_RUNNING_2, Resources.Images.Protagonist.CHARACTER_RUNNING_3, Resources.Images.Protagonist.CHARACTER_RUNNING_4, Resources.Images.Protagonist.CHARACTER_RUNNING_5);
+		
+		reset();
+	}
+	
+	public void reset()
+	{
 		this.x = Level.BLOCK_SIZE * 28;
 		this.y = Level.BLOCK_SIZE * 15;
-		this.z = 2;
 		
 		this.position.set(this.x, this.y);
 		
 		setImage(Resources.Images.Protagonist.CHARACTER_IDLE);
 		
-		this.animationRunning = new Animation(0.05f, Resources.Images.Protagonist.CHARACTER_RUNNING_1, Resources.Images.Protagonist.CHARACTER_RUNNING_2, Resources.Images.Protagonist.CHARACTER_RUNNING_3, Resources.Images.Protagonist.CHARACTER_RUNNING_4, Resources.Images.Protagonist.CHARACTER_RUNNING_5);
+		this.animationRunning.reset();
 	}
 	
 	public void update(float delta, Input input)
@@ -57,11 +67,11 @@ public class Protagonist extends Process
 	
 	private void checkCollision()
 	{
-		List<Process> list = getCollisions(Laser.class);
+		List<Process> list = getCollisions(LaserBeam.class);
 		
 		if (!list.isEmpty())
 		{
-			
+			this.level.reset();
 		}
 	}
 	
