@@ -20,6 +20,19 @@ public class Resources
 			public static final String CHARACTER_RUNNING_5 = Protagonist.ROOT + "running_5.png";
 		}
 		
+		public static class Enemies
+		{
+			private static final String ROOT_ENEMIES = Images.ROOT_IMAGES + "enemies/";
+			
+			public static class Laser
+			{
+				private static final String ROOT = Enemies.ROOT_ENEMIES + "laser/";
+				
+				public static final String BASE = Laser.ROOT + "base.png";
+				public static final String BEAM = Laser.ROOT + "beam.png";
+			}
+		}
+		
 		public static class Levels
 		{
 			private static final String ROOT = Images.ROOT_IMAGES + "levels/";

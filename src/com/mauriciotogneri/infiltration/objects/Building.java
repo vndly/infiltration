@@ -12,11 +12,11 @@ public class Building extends Process
 	private int mapHeight = 0;
 	private Rectangle[][] blocks;
 	
-	public Building(String path, int z, String image)
+	public Building(String path, String image)
 	{
 		super(false, false);
 		
-		this.z = z;
+		this.z = 1;
 		
 		setImage(image);
 		
