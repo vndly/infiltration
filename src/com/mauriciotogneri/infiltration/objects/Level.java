@@ -7,6 +7,7 @@ public class Level
 {
 	private final Protagonist max;
 	private final ViewPoint viewPoint;
+	private final Enemy enemy;
 	
 	public static final int BLOCK_SIZE = 32;
 	
@@ -20,6 +21,9 @@ public class Level
 		
 		this.max = new Protagonist(building);
 		this.max.start();
+		
+		this.enemy = new Enemy();
+		this.enemy.start();
 	}
 	
 	public void update(float delta, Input input)

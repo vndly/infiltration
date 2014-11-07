@@ -1,5 +1,6 @@
 package com.mauriciotogneri.infiltration.objects;
 
+import java.util.List;
 import com.mauriciotogneri.infiltration.controls.Input;
 import com.mauriciotogneri.infiltration.utils.Resources;
 import com.misty.graphics.Animation;
@@ -48,7 +49,19 @@ public class Protagonist extends Process
 		
 		checkPosition();
 		
+		checkCollision();
+		
 		setSprite(delta);
+	}
+	
+	private void checkCollision()
+	{
+		List<Process> list = getCollisions(Enemy.class);
+		
+		if (!list.isEmpty())
+		{
+			
+		}
 	}
 	
 	private void setSprite(float delta)
