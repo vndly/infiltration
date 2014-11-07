@@ -13,7 +13,6 @@ public class Protagonist extends Process
 	private final Vector position = new Vector();
 	private final Vector acceleration = new Vector();
 	private final Vector velocity = new Vector();
-	private State state = State.IDLE;
 	
 	private boolean jumpingPressed = false;
 	
@@ -22,11 +21,6 @@ public class Protagonist extends Process
 	private static final int MAX_FALL_SPEED = -Level.BLOCK_SIZE * 10;
 	private static final int GRAVITY = 5 * Protagonist.MAX_FALL_SPEED;
 	private static final int MAX_RUNNING_SPEED = Level.BLOCK_SIZE * 6;
-	
-	private enum State
-	{
-		IDLE, RUNNING, JUMPING
-	}
 	
 	public Protagonist(Building building)
 	{
@@ -58,18 +52,23 @@ public class Protagonist extends Process
 	
 	private void setSprite(float delta)
 	{
-		if (this.state == State.IDLE)
+		if (this.velocity.y > 0)
 		{
-			setImage(Resources.Images.Protagonist.CHARACTER_IDLE);
+			setImage(Resources.Images.Protagonist.CHARACTER_JUMPING);
 			this.animationRunning.reset();
 		}
-		else if (this.state == State.RUNNING)
+		else if (this.velocity.y < 0)
+		{
+			setImage(Resources.Images.Protagonist.CHARACTER_JUMPING);
+			this.animationRunning.reset();
+		}
+		else if (this.velocity.x != 0)
 		{
 			setImage(this.animationRunning.getSprite(delta));
 		}
-		else if (this.state == State.JUMPING)
+		else
 		{
-			setImage(Resources.Images.Protagonist.CHARACTER_JUMPING);
+			setImage(Resources.Images.Protagonist.CHARACTER_IDLE);
 			this.animationRunning.reset();
 		}
 	}
@@ -109,10 +108,7 @@ public class Protagonist extends Process
 	
 	public void touchGround()
 	{
-		if (this.state == State.JUMPING)
-		{
-			this.state = State.IDLE;
-		}
+		this.velocity.y = 0;
 	}
 	
 	public void touchCeiling()
@@ -163,12 +159,11 @@ public class Protagonist extends Process
 	{
 		if (input.up)
 		{
-			if ((!this.jumpingPressed) && (this.state != State.JUMPING))
+			if ((!this.jumpingPressed) && (this.velocity.y == 0))
 			{
 				playSound(Resources.Audio.Sound.JUMP);
 				
 				this.jumpingPressed = true;
-				this.state = State.JUMPING;
 				this.velocity.y = Protagonist.MAX_JUMP_SPEED;
 			}
 		}
@@ -180,32 +175,15 @@ public class Protagonist extends Process
 		if (input.left)
 		{
 			this.orientationHorizontal = -1;
-			
-			if (this.state == State.IDLE)
-			{
-				this.state = State.RUNNING;
-			}
-			
 			this.acceleration.x = -1;
 		}
 		else if (input.right)
 		{
 			this.orientationHorizontal = 1;
-			
-			if (this.state == State.IDLE)
-			{
-				this.state = State.RUNNING;
-			}
-			
 			this.acceleration.x = 1;
 		}
 		else
 		{
-			if (this.state == State.RUNNING)
-			{
-				this.state = State.IDLE;
-			}
-			
 			this.acceleration.x = 0;
 		}
 	}
