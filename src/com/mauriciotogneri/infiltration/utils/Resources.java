@@ -12,10 +12,12 @@ public class Resources
 			
 			public static final String CHARACTER_IDLE = Protagonist.ROOT + "idle.png";
 			public static final String CHARACTER_JUMPING = Protagonist.ROOT + "jumping.png";
+			public static final String CHARACTER_FALLING = Protagonist.ROOT + "falling.png";
 			public static final String CHARACTER_RUNNING_1 = Protagonist.ROOT + "running_1.png";
 			public static final String CHARACTER_RUNNING_2 = Protagonist.ROOT + "running_2.png";
 			public static final String CHARACTER_RUNNING_3 = Protagonist.ROOT + "running_3.png";
 			public static final String CHARACTER_RUNNING_4 = Protagonist.ROOT + "running_4.png";
+			public static final String CHARACTER_RUNNING_5 = Protagonist.ROOT + "running_5.png";
 		}
 		
 		public static class Levels

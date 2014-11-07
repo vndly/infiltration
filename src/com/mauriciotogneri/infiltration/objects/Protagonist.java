@@ -14,6 +14,7 @@ public class Protagonist extends Process
 	private final Vector acceleration = new Vector();
 	private final Vector velocity = new Vector();
 	
+	private boolean jumping = false;
 	private boolean jumpingPressed = false;
 	
 	private static final float FRICTION = 0.6f;
@@ -36,7 +37,7 @@ public class Protagonist extends Process
 		
 		setImage(Resources.Images.Protagonist.CHARACTER_IDLE);
 		
-		this.animationRunning = new Animation(0.05f, Resources.Images.Protagonist.CHARACTER_RUNNING_1, Resources.Images.Protagonist.CHARACTER_RUNNING_2, Resources.Images.Protagonist.CHARACTER_RUNNING_3, Resources.Images.Protagonist.CHARACTER_RUNNING_4);
+		this.animationRunning = new Animation(0.05f, Resources.Images.Protagonist.CHARACTER_RUNNING_1, Resources.Images.Protagonist.CHARACTER_RUNNING_2, Resources.Images.Protagonist.CHARACTER_RUNNING_3, Resources.Images.Protagonist.CHARACTER_RUNNING_4, Resources.Images.Protagonist.CHARACTER_RUNNING_5);
 	}
 	
 	public void update(float delta, Input input)
@@ -52,12 +53,12 @@ public class Protagonist extends Process
 	
 	private void setSprite(float delta)
 	{
-		if (this.velocity.y > 0)
+		if (this.velocity.y < 0)
 		{
-			setImage(Resources.Images.Protagonist.CHARACTER_JUMPING);
+			setImage(Resources.Images.Protagonist.CHARACTER_FALLING);
 			this.animationRunning.reset();
 		}
-		else if (this.velocity.y < 0)
+		else if ((this.velocity.y > 0) || (this.jumping))
 		{
 			setImage(Resources.Images.Protagonist.CHARACTER_JUMPING);
 			this.animationRunning.reset();
@@ -109,6 +110,7 @@ public class Protagonist extends Process
 	public void touchGround()
 	{
 		this.velocity.y = 0;
+		this.jumping = false;
 	}
 	
 	public void touchCeiling()
@@ -163,6 +165,7 @@ public class Protagonist extends Process
 			{
 				playSound(Resources.Audio.Sound.JUMP);
 				
+				this.jumping = true;
 				this.jumpingPressed = true;
 				this.velocity.y = Protagonist.MAX_JUMP_SPEED;
 			}
