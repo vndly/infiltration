@@ -21,8 +21,8 @@ public class Protagonist extends Process
 	private boolean jumpingPressed = false;
 	
 	private static final float FRICTION = 0.6f;
-	private static final int MAX_JUMP_SPEED = Level.BLOCK_SIZE * 18;
-	private static final int MAX_FALL_SPEED = -Level.BLOCK_SIZE * 10;
+	private static final int MAX_JUMP_SPEED = Level.BLOCK_SIZE * 17;
+	private static final int MAX_FALL_SPEED = -Level.BLOCK_SIZE * 12;
 	private static final int GRAVITY = 5 * Protagonist.MAX_FALL_SPEED;
 	private static final int MAX_RUNNING_SPEED = Level.BLOCK_SIZE * 6;
 	
