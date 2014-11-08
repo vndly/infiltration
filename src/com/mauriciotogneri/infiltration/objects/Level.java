@@ -9,7 +9,8 @@ public class Level
 	private final Building building;
 	private final Protagonist max;
 	private final ViewPoint viewPoint;
-	private final Laser laser;
+	private final Laser laser1;
+	private final Laser laser2;
 	
 	public static final int BLOCK_SIZE = 32;
 	
@@ -24,7 +25,8 @@ public class Level
 		this.max = new Protagonist(this, this.building, Level.BLOCK_SIZE * 28, Level.BLOCK_SIZE * 15, -1);
 		this.max.start();
 		
-		this.laser = new Laser(Level.BLOCK_SIZE * 19, Level.BLOCK_SIZE * 13, 2, 1000, 2000, true);
+		this.laser1 = new Laser(Level.BLOCK_SIZE * 18, Level.BLOCK_SIZE * 13, 2, 1000, 1000, true);
+		this.laser2 = new Laser(Level.BLOCK_SIZE * 20, Level.BLOCK_SIZE * 13, 2, 1000, 1000, true);
 		
 		reset();
 	}
@@ -38,13 +40,13 @@ public class Level
 	public void reset()
 	{
 		this.max.reset();
-		this.laser.reset();
+		this.laser1.reset();
+		this.laser2.reset();
 	}
 	
 	public void stop()
 	{
-		// TODO
-		
-		this.laser.stop();
+		this.laser1.stop();
+		this.laser2.stop();
 	}
 }
