@@ -1,5 +1,6 @@
 package com.mauriciotogneri.infiltration.objects.enemies.turret;
 
+import com.mauriciotogneri.infiltration.objects.Level;
 import com.mauriciotogneri.infiltration.utils.Resources;
 import com.misty.kernel.Process;
 
@@ -30,5 +31,10 @@ public class TurretBeam extends Process
 	{
 		this.x += (this.speed * delta) * this.directionX;
 		this.y += (this.speed * delta) * this.directionY;
+		
+		if (this.x > Level.BLOCK_SIZE * 12)
+		{
+			finish();
+		}
 	}
 }

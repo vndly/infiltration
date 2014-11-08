@@ -80,7 +80,7 @@ public class Building extends Process
 	{
 		boolean result = false;
 		
-		if ((block != null) && block.intersects(protagonist.getBounds()))
+		if ((block != null) && block.intersects(protagonist.getExternalBounds()))
 		{
 			protagonist.y = block.y + block.height;
 			protagonist.touchGround();
@@ -105,7 +105,7 @@ public class Building extends Process
 	{
 		boolean result = false;
 		
-		if ((block != null) && block.intersects(protagonist.getBounds()))
+		if ((block != null) && block.intersects(protagonist.getExternalBounds()))
 		{
 			protagonist.y = block.y - protagonist.height;
 			protagonist.touchCeiling();
@@ -130,7 +130,7 @@ public class Building extends Process
 	{
 		boolean result = false;
 		
-		if ((block != null) && block.intersects(protagonist.getBounds()))
+		if ((block != null) && block.intersects(protagonist.getExternalBounds()))
 		{
 			protagonist.x = block.x + block.width;
 			result = true;
@@ -154,7 +154,7 @@ public class Building extends Process
 	{
 		boolean result = false;
 		
-		if ((block != null) && block.intersects(protagonist.getBounds()))
+		if ((block != null) && block.intersects(protagonist.getExternalBounds()))
 		{
 			protagonist.x = block.x - protagonist.width;
 			result = true;
