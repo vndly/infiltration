@@ -10,7 +10,7 @@ public class LaserBeam extends Process
 	private final int timeActive;
 	private final int timeInactive;
 	
-	public LaserBeam(float x, float y, int timeActive, int timeInactive, boolean visible)
+	public LaserBeam(float x, float y, int timeActive, int timeInactive, boolean initialVisible)
 	{
 		super(true, true);
 		
@@ -20,7 +20,7 @@ public class LaserBeam extends Process
 		
 		this.timeActive = timeActive;
 		this.timeInactive = timeInactive;
-		this.initialVisible = visible;
+		this.initialVisible = initialVisible;
 		
 		setImage(Resources.Images.Enemies.Laser.BEAM);
 		

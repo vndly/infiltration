@@ -17,6 +17,10 @@ public class Protagonist extends Process
 	private final Vector acceleration = new Vector();
 	private final Vector velocity = new Vector();
 	
+	private final float initialX;
+	private final float initialY;
+	private final int initialOrientationHorizontal;
+	
 	private boolean jumping = false;
 	private boolean jumpingPressed = false;
 	
@@ -26,12 +30,16 @@ public class Protagonist extends Process
 	private static final int GRAVITY = 5 * Protagonist.MAX_FALL_SPEED;
 	private static final int MAX_RUNNING_SPEED = Level.BLOCK_SIZE * 6;
 	
-	public Protagonist(Level level, Building building)
+	public Protagonist(Level level, Building building, float initialX, float initialY, int initialOrientationHorizontal)
 	{
 		super(false, true);
 		
 		this.level = level;
 		this.building = building;
+		
+		this.initialX = initialX;
+		this.initialY = initialY;
+		this.initialOrientationHorizontal = initialOrientationHorizontal;
 		
 		this.z = 2;
 		
@@ -42,12 +50,12 @@ public class Protagonist extends Process
 	
 	public void reset()
 	{
-		this.x = Level.BLOCK_SIZE * 28;
-		this.y = Level.BLOCK_SIZE * 15;
-		
-		this.orientationHorizontal = -1;
+		this.x = this.initialX;
+		this.y = this.initialY;
 		
 		this.position.set(this.x, this.y);
+		
+		this.orientationHorizontal = this.initialOrientationHorizontal;
 		
 		setImage(Resources.Images.Protagonist.CHARACTER_IDLE);
 		
