@@ -1,6 +1,7 @@
 package com.mauriciotogneri.infiltration.objects;
 
 import java.util.List;
+import android.util.Log;
 import com.mauriciotogneri.infiltration.controls.Input;
 import com.mauriciotogneri.infiltration.objects.enemies.laser.LaserBeam;
 import com.mauriciotogneri.infiltration.utils.Resources;
@@ -25,7 +26,7 @@ public class Protagonist extends Process
 	private boolean jumpingPressed = false;
 	
 	private static final float FRICTION = 0.6f;
-	private static final int MAX_JUMP_SPEED = Level.BLOCK_SIZE * 17;
+	private static final int MAX_JUMP_SPEED = Level.BLOCK_SIZE * 16;
 	private static final int MAX_FALL_SPEED = -Level.BLOCK_SIZE * 12;
 	private static final int GRAVITY = 5 * Protagonist.MAX_FALL_SPEED;
 	private static final int MAX_RUNNING_SPEED = Level.BLOCK_SIZE * 6;
@@ -110,7 +111,15 @@ public class Protagonist extends Process
 	
 	private void updatePosition(float delta)
 	{
-		this.acceleration.y = Protagonist.GRAVITY;
+		if (!this.building.touchingGround(this))
+		{
+			this.acceleration.y = Protagonist.GRAVITY;
+		}
+		else
+		{
+			this.acceleration.y = 0;
+		}
+		
 		this.acceleration.mul(delta);
 		this.velocity.add(this.acceleration);
 		
@@ -137,6 +146,8 @@ public class Protagonist extends Process
 		{
 			this.velocity.y = Protagonist.MAX_FALL_SPEED;
 		}
+		
+		Log.e("TEST", this.acceleration.y + ", " + this.velocity.y);
 		
 		this.position.add(this.velocity.copy().mul(delta));
 	}

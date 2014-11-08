@@ -65,6 +65,16 @@ public class Building extends Process
 		// block.start();
 	}
 	
+	public boolean touchingGround(Protagonist protagonist)
+	{
+		Rectangle blockA = getBlock(protagonist.x, protagonist.y - 1);
+		Rectangle blockB = getBlock(protagonist.x + protagonist.width - 1, protagonist.y - 1);
+		
+		// return ((blockA != null) && blockA.intersects(protagonist.getExternalBounds())) || ((blockB !=
+		// null) && blockB.intersects(protagonist.getExternalBounds()));
+		return ((blockA != null) || (blockB != null));
+	}
+	
 	public void checkBottom(Protagonist protagonist)
 	{
 		Rectangle blockA = getBlock(protagonist.x, protagonist.y - 1);
