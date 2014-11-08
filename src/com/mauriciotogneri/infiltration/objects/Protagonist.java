@@ -35,7 +35,7 @@ public class Protagonist extends Process
 		
 		this.z = 2;
 		
-		this.animationRunning = new Animation(0.05f, Resources.Images.Protagonist.CHARACTER_RUNNING_1, Resources.Images.Protagonist.CHARACTER_RUNNING_2, Resources.Images.Protagonist.CHARACTER_RUNNING_3, Resources.Images.Protagonist.CHARACTER_RUNNING_4, Resources.Images.Protagonist.CHARACTER_RUNNING_5);
+		this.animationRunning = new Animation(0.06f, Resources.Images.Protagonist.CHARACTER_RUNNING_1, Resources.Images.Protagonist.CHARACTER_RUNNING_2, Resources.Images.Protagonist.CHARACTER_RUNNING_3, Resources.Images.Protagonist.CHARACTER_RUNNING_4, Resources.Images.Protagonist.CHARACTER_RUNNING_5);
 		
 		reset();
 	}
@@ -44,6 +44,8 @@ public class Protagonist extends Process
 	{
 		this.x = Level.BLOCK_SIZE * 28;
 		this.y = Level.BLOCK_SIZE * 15;
+		
+		this.orientationHorizontal = -1;
 		
 		this.position.set(this.x, this.y);
 		
