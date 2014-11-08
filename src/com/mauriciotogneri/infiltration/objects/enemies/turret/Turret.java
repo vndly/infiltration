@@ -41,6 +41,8 @@ public class Turret extends Process
 		TurretBeam beam = new TurretBeam(this.x, this.y, 0, this.speed, 1, 0);
 		beam.start();
 		
+		playSound(Resources.Audio.Sound.Enemies.TURRET_BEAM);
+		
 		this.beams.add(beam);
 	}
 }

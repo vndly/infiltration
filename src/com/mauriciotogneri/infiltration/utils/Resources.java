@@ -8,16 +8,16 @@ public class Resources
 		
 		public static class Protagonist
 		{
-			private static final String ROOT = Images.ROOT_IMAGES + "sprites/";
+			private static final String ROOT_PROTAGONIST = Images.ROOT_IMAGES + "sprites/";
 			
-			public static final String CHARACTER_IDLE = Protagonist.ROOT + "idle.png";
-			public static final String CHARACTER_JUMPING = Protagonist.ROOT + "jumping.png";
-			public static final String CHARACTER_FALLING = Protagonist.ROOT + "falling.png";
-			public static final String CHARACTER_RUNNING_1 = Protagonist.ROOT + "running_1.png";
-			public static final String CHARACTER_RUNNING_2 = Protagonist.ROOT + "running_2.png";
-			public static final String CHARACTER_RUNNING_3 = Protagonist.ROOT + "running_3.png";
-			public static final String CHARACTER_RUNNING_4 = Protagonist.ROOT + "running_4.png";
-			public static final String CHARACTER_RUNNING_5 = Protagonist.ROOT + "running_5.png";
+			public static final String CHARACTER_IDLE = Protagonist.ROOT_PROTAGONIST + "idle.png";
+			public static final String CHARACTER_JUMPING = Protagonist.ROOT_PROTAGONIST + "jumping.png";
+			public static final String CHARACTER_FALLING = Protagonist.ROOT_PROTAGONIST + "falling.png";
+			public static final String CHARACTER_RUNNING_1 = Protagonist.ROOT_PROTAGONIST + "running_1.png";
+			public static final String CHARACTER_RUNNING_2 = Protagonist.ROOT_PROTAGONIST + "running_2.png";
+			public static final String CHARACTER_RUNNING_3 = Protagonist.ROOT_PROTAGONIST + "running_3.png";
+			public static final String CHARACTER_RUNNING_4 = Protagonist.ROOT_PROTAGONIST + "running_4.png";
+			public static final String CHARACTER_RUNNING_5 = Protagonist.ROOT_PROTAGONIST + "running_5.png";
 		}
 		
 		public static class Enemies
@@ -26,41 +26,41 @@ public class Resources
 			
 			public static class Laser
 			{
-				private static final String ROOT = Enemies.ROOT_ENEMIES + "laser/";
+				private static final String ROOT_LASER = Enemies.ROOT_ENEMIES + "laser/";
 				
-				public static final String BASE = Laser.ROOT + "laser_base.png";
-				public static final String BEAM = Laser.ROOT + "laser_beam.png";
+				public static final String BASE = Laser.ROOT_LASER + "laser_base.png";
+				public static final String BEAM = Laser.ROOT_LASER + "laser_beam.png";
 			}
 			
 			public static class Turret
 			{
-				private static final String ROOT = Enemies.ROOT_ENEMIES + "turret/";
+				private static final String ROOT_TURRET = Enemies.ROOT_ENEMIES + "turret/";
 				
-				public static final String BASE = Turret.ROOT + "turret_base.png";
-				public static final String BEAM = Turret.ROOT + "turret_beam.png";
+				public static final String BASE = Turret.ROOT_TURRET + "turret_base.png";
+				public static final String BEAM = Turret.ROOT_TURRET + "turret_beam.png";
 			}
 		}
 		
 		public static class Levels
 		{
-			private static final String ROOT = Images.ROOT_IMAGES + "levels/";
+			private static final String ROOT_LEVELS = Images.ROOT_IMAGES + "levels/";
 			
-			public static final String LEVEL_1 = Levels.ROOT + "level_1.png";
+			public static final String LEVEL_1 = Levels.ROOT_LEVELS + "level_1.png";
 		}
 		
 		public static class Controls
 		{
-			private static final String ROOT = Images.ROOT_IMAGES + "controls/";
+			private static final String ROOT_CONTROLS = Images.ROOT_IMAGES + "controls/";
 			
-			public static final String ARROW = Controls.ROOT + "arrow.png";
+			public static final String ARROW = Controls.ROOT_CONTROLS + "arrow.png";
 		}
 	}
 	
 	public static class Levels
 	{
-		private static final String ROOT = "levels/";
+		private static final String ROOT_LEVELS = "levels/";
 		
-		public static final String LEVEL_1 = Levels.ROOT + "level_1.txt";
+		public static final String LEVEL_1 = Levels.ROOT_LEVELS + "level_1.txt";
 	}
 	
 	public static class Audio
@@ -69,16 +69,23 @@ public class Resources
 		
 		public static class Music
 		{
-			private static final String ROOT = Audio.ROOT_AUDIO + "music/";
+			private static final String ROOT_MUSIC = Audio.ROOT_AUDIO + "music/";
 			
-			public static final String MUSIC = Music.ROOT + "music.ogg";
+			public static final String MUSIC = Music.ROOT_MUSIC + "music.ogg";
 		}
 		
 		public static class Sound
 		{
-			private static final String ROOT = Audio.ROOT_AUDIO + "sounds/";
+			private static final String ROOT_SOUND = Audio.ROOT_AUDIO + "sounds/";
 			
-			public static final String JUMP = Sound.ROOT + "jump.ogg";
+			public static final String JUMP = Sound.ROOT_SOUND + "jump.ogg";
+			
+			public static class Enemies
+			{
+				private static final String ROOT_ENEMIES = Sound.ROOT_SOUND + "enemies/";
+				
+				public static final String TURRET_BEAM = Enemies.ROOT_ENEMIES + "turret_beam.ogg";
+			}
 		}
 	}
 }
