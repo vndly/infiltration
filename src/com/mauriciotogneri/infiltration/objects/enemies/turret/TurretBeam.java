@@ -1,6 +1,6 @@
 package com.mauriciotogneri.infiltration.objects.enemies.turret;
 
-import com.mauriciotogneri.infiltration.objects.Level;
+import com.mauriciotogneri.infiltration.objects.Building;
 import com.mauriciotogneri.infiltration.utils.Resources;
 import com.misty.kernel.Process;
 
@@ -9,8 +9,9 @@ public class TurretBeam extends Process
 	private final float speed;
 	private final int directionX;
 	private final int directionY;
+	private final Building building;
 	
-	public TurretBeam(float x, float y, float angle, float speed, int directionX, int directionY)
+	public TurretBeam(float x, float y, float angle, float speed, int directionX, int directionY, Building building)
 	{
 		super(true, true);
 		
@@ -23,6 +24,8 @@ public class TurretBeam extends Process
 		this.directionX = directionX;
 		this.directionY = directionY;
 		
+		this.building = building;
+		
 		setImage(Resources.Images.Enemies.Turret.BEAM);
 	}
 	
@@ -32,7 +35,8 @@ public class TurretBeam extends Process
 		this.x += (this.speed * delta) * this.directionX;
 		this.y += (this.speed * delta) * this.directionY;
 		
-		if (this.x > Level.BLOCK_SIZE * 12)
+		// if (this.x > Level.BLOCK_SIZE * 12)
+		if (this.building.collide(this))
 		{
 			finish();
 		}

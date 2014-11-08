@@ -3,6 +3,7 @@ package com.mauriciotogneri.infiltration.objects;
 import java.util.List;
 import com.mauriciotogneri.infiltration.controls.Input;
 import com.mauriciotogneri.infiltration.objects.enemies.laser.LaserBeam;
+import com.mauriciotogneri.infiltration.objects.enemies.turret.TurretBeam;
 import com.mauriciotogneri.infiltration.utils.Resources;
 import com.misty.graphics.Animation;
 import com.misty.kernel.Process;
@@ -77,7 +78,7 @@ public class Protagonist extends Process
 	
 	private void checkCollision()
 	{
-		List<Process> list = getCollisions(LaserBeam.class);
+		List<Process> list = getCollisions(LaserBeam.class, TurretBeam.class);
 		
 		if (!list.isEmpty())
 		{

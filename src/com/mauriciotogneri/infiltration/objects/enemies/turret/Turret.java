@@ -2,16 +2,18 @@ package com.mauriciotogneri.infiltration.objects.enemies.turret;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.mauriciotogneri.infiltration.objects.Building;
 import com.mauriciotogneri.infiltration.utils.Resources;
 import com.misty.kernel.Alarm.OnAlarmRing;
 import com.misty.kernel.Process;
 
 public class Turret extends Process
 {
+	private final Building building;
 	private final float speed;
 	private final List<TurretBeam> beams = new ArrayList<TurretBeam>();
 	
-	public Turret(float x, float y, int frequency, float speed, int orientationHorizontal)
+	public Turret(float x, float y, int frequency, float speed, int orientationHorizontal, Building building)
 	{
 		super(true, true);
 		
@@ -21,6 +23,8 @@ public class Turret extends Process
 		this.orientationHorizontal = orientationHorizontal;
 		
 		this.speed = speed;
+		
+		this.building = building;
 		
 		setImage(Resources.Images.Enemies.Turret.BASE);
 		
@@ -38,7 +42,7 @@ public class Turret extends Process
 	
 	private void shot()
 	{
-		TurretBeam beam = new TurretBeam(this.x, this.y, 0, this.speed, this.orientationHorizontal, 0);
+		TurretBeam beam = new TurretBeam(this.x, this.y, 0, this.speed, this.orientationHorizontal, 0, this.building);
 		beam.start();
 		
 		playSound(Resources.Audio.Sound.Enemies.TURRET_BEAM);

@@ -65,6 +65,41 @@ public class Building extends Process
 		// block.start();
 	}
 	
+	public boolean collide(Process process)
+	{
+		Rectangle bounds = process.getInternalBounds();
+		
+		Rectangle blockA = getBlock(bounds.x, bounds.y);
+		
+		if ((blockA != null) && bounds.intersects(blockA))
+		{
+			return true;
+		}
+		
+		Rectangle blockB = getBlock(bounds.x, bounds.y + bounds.height - 1);
+		
+		if ((blockB != null) && bounds.intersects(blockB))
+		{
+			return true;
+		}
+		
+		Rectangle blockC = getBlock(bounds.x + bounds.width - 1, bounds.y + bounds.height - 1);
+		
+		if ((blockC != null) && bounds.intersects(blockC))
+		{
+			return true;
+		}
+		
+		Rectangle blockD = getBlock(bounds.x + bounds.width - 1, bounds.y);
+		
+		if ((blockD != null) && bounds.intersects(blockD))
+		{
+			return true;
+		}
+		
+		return false;
+	}
+	
 	public boolean touchingGround(Protagonist protagonist)
 	{
 		Rectangle blockA = getBlock(protagonist.x, protagonist.y - 1);

@@ -31,7 +31,7 @@ public class Level
 		this.laser1 = new Laser(Level.BLOCK_SIZE * 18, Level.BLOCK_SIZE * 13, 2, 1000, 1000, true);
 		this.laser2 = new Laser(Level.BLOCK_SIZE * 20, Level.BLOCK_SIZE * 13, 2, 1000, 1000, true);
 		
-		this.turret = new Turret(Level.BLOCK_SIZE * 5, Level.BLOCK_SIZE * 4, 1500, Level.BLOCK_SIZE * 8, 1);
+		this.turret = new Turret(Level.BLOCK_SIZE * 5, Level.BLOCK_SIZE * 4, 1500, Level.BLOCK_SIZE * 8, 1, this.building);
 		this.turret.start();
 		
 		reset();
