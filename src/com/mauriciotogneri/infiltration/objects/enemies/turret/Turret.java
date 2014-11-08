@@ -11,6 +11,8 @@ public class Turret extends Process
 {
 	private final Building building;
 	private final float speed;
+	
+	private final Object lock = new Object();
 	private final List<TurretBeam> beams = new ArrayList<TurretBeam>();
 	
 	public Turret(float x, float y, int frequency, float speed, int orientationHorizontal, Building building)
@@ -40,13 +42,42 @@ public class Turret extends Process
 		}, frequency);
 	}
 	
+	public void checkCollision(TurretBeam beam)
+	{
+		if (this.building.collide(beam))
+		{
+			beam.finish();
+			
+			synchronized (this.lock)
+			{
+				this.beams.remove(beam);
+			}
+		}
+	}
+	
+	public void reset()
+	{
+		synchronized (this.lock)
+		{
+			for (TurretBeam beam : this.beams)
+			{
+				beam.finish();
+			}
+			
+			this.beams.clear();
+		}
+	}
+	
 	private void shot()
 	{
-		TurretBeam beam = new TurretBeam(this.x, this.y, 0, this.speed, this.orientationHorizontal, 0, this.building);
+		TurretBeam beam = new TurretBeam(this, this.x, this.y, 0, this.speed, this.orientationHorizontal, 0);
 		beam.start();
 		
 		playSound(Resources.Audio.Sound.Enemies.TURRET_BEAM);
 		
-		this.beams.add(beam);
+		synchronized (this.lock)
+		{
+			this.beams.add(beam);
+		}
 	}
 }

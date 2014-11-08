@@ -48,6 +48,7 @@ public class Level
 		this.max.reset();
 		this.laser1.reset();
 		this.laser2.reset();
+		this.turret.reset();
 	}
 	
 	public void stop()
