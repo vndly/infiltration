@@ -1,7 +1,6 @@
 package com.mauriciotogneri.infiltration.objects;
 
 import java.util.List;
-import android.util.Log;
 import com.mauriciotogneri.infiltration.controls.Input;
 import com.mauriciotogneri.infiltration.objects.enemies.laser.LaserBeam;
 import com.mauriciotogneri.infiltration.utils.Resources;
@@ -135,7 +134,6 @@ public class Protagonist extends Process
 		{
 			this.velocity.x *= Protagonist.FRICTION;
 			
-			// TODO: ADJUST LIMIT
 			if (Math.abs(this.velocity.x) < 1)
 			{
 				this.velocity.x = 0;
@@ -146,8 +144,6 @@ public class Protagonist extends Process
 		{
 			this.velocity.y = Protagonist.MAX_FALL_SPEED;
 		}
-		
-		Log.e("TEST", this.acceleration.y + ", " + this.velocity.y);
 		
 		this.position.add(this.velocity.copy().mul(delta));
 	}
