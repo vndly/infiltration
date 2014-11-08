@@ -2,6 +2,7 @@ package com.mauriciotogneri.infiltration.objects;
 
 import com.mauriciotogneri.infiltration.controls.Input;
 import com.mauriciotogneri.infiltration.objects.enemies.laser.Laser;
+import com.mauriciotogneri.infiltration.objects.enemies.turret.Turret;
 import com.mauriciotogneri.infiltration.utils.Resources;
 
 public class Level
@@ -9,8 +10,10 @@ public class Level
 	private final Building building;
 	private final Protagonist max;
 	private final ViewPoint viewPoint;
+	
 	private final Laser laser1;
 	private final Laser laser2;
+	private final Turret turret;
 	
 	public static final int BLOCK_SIZE = 32;
 	
@@ -22,11 +25,14 @@ public class Level
 		this.viewPoint = new ViewPoint((this.building.getWidth() + 1) * Level.BLOCK_SIZE);
 		this.viewPoint.start();
 		
-		this.max = new Protagonist(this, this.building, Level.BLOCK_SIZE * 28, Level.BLOCK_SIZE * 15, -1);
+		this.max = new Protagonist(this, this.building, Level.BLOCK_SIZE * 4, Level.BLOCK_SIZE * 6, 1);
 		this.max.start();
 		
 		this.laser1 = new Laser(Level.BLOCK_SIZE * 18, Level.BLOCK_SIZE * 13, 2, 1000, 1000, true);
 		this.laser2 = new Laser(Level.BLOCK_SIZE * 20, Level.BLOCK_SIZE * 13, 2, 1000, 1000, true);
+		
+		this.turret = new Turret(Level.BLOCK_SIZE * 5, Level.BLOCK_SIZE * 4, 1500, Level.BLOCK_SIZE * 5, 1);
+		this.turret.start();
 		
 		reset();
 	}

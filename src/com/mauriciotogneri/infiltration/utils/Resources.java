@@ -28,8 +28,16 @@ public class Resources
 			{
 				private static final String ROOT = Enemies.ROOT_ENEMIES + "laser/";
 				
-				public static final String BASE = Laser.ROOT + "base.png";
-				public static final String BEAM = Laser.ROOT + "beam.png";
+				public static final String BASE = Laser.ROOT + "laser_base.png";
+				public static final String BEAM = Laser.ROOT + "laser_beam.png";
+			}
+			
+			public static class Turret
+			{
+				private static final String ROOT = Enemies.ROOT_ENEMIES + "turret/";
+				
+				public static final String BASE = Turret.ROOT + "turret_base.png";
+				public static final String BEAM = Turret.ROOT + "turret_beam.png";
 			}
 		}
 		

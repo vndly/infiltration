@@ -7,7 +7,7 @@ public class LaserBase extends Process
 {
 	public LaserBase(float x, float y, float angle)
 	{
-		super(false, true);
+		super(false, false);
 		
 		this.x = x;
 		this.y = y;
