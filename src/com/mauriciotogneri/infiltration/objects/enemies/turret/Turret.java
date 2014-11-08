@@ -38,7 +38,7 @@ public class Turret extends Process
 	
 	private void shot()
 	{
-		TurretBeam beam = new TurretBeam(this.x, this.y, 0, this.speed, 1, 0);
+		TurretBeam beam = new TurretBeam(this.x, this.y, 0, this.speed, this.orientationHorizontal, 0);
 		beam.start();
 		
 		playSound(Resources.Audio.Sound.Enemies.TURRET_BEAM);
