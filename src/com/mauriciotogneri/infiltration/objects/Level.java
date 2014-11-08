@@ -37,8 +37,8 @@ public class Level
 	
 	public void reset()
 	{
-		// TODO
 		this.max.reset();
+		this.laser.reset();
 	}
 	
 	public void stop()

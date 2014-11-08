@@ -26,6 +26,14 @@ public class Laser
 		}
 	}
 	
+	public void reset()
+	{
+		for (LaserBeam beam : this.beams)
+		{
+			beam.reset();
+		}
+	}
+	
 	public void stop()
 	{
 		this.baseBottom.finish();

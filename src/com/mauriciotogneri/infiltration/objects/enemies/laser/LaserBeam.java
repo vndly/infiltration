@@ -6,6 +6,7 @@ import com.misty.kernel.Process;
 
 public class LaserBeam extends Process
 {
+	private final boolean initialVisible;
 	private final int timeActive;
 	private final int timeInactive;
 	
@@ -19,15 +20,17 @@ public class LaserBeam extends Process
 		
 		this.timeActive = timeActive;
 		this.timeInactive = timeInactive;
-		this.visible = visible;
+		this.initialVisible = visible;
 		
 		setImage(Resources.Images.Enemies.Laser.BEAM);
 		
-		configureAlarm();
+		reset();
 	}
 	
 	private void configureAlarm()
 	{
+		removeAlarms();
+		
 		if (this.visible)
 		{
 			setAlarm(new OnAlarmRing()
@@ -59,6 +62,14 @@ public class LaserBeam extends Process
 	private void alarmRing()
 	{
 		this.visible = !this.visible;
+		
+		configureAlarm();
+	}
+	
+	public void reset()
+	{
+		this.visible = this.initialVisible;
+		
 		configureAlarm();
 	}
 }
