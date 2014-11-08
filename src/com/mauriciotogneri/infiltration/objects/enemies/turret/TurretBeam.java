@@ -23,8 +23,6 @@ public class TurretBeam extends Process
 		this.directionY = directionY;
 		
 		setImage(Resources.Images.Enemies.Turret.BEAM);
-		
-		reset();
 	}
 	
 	@Override
@@ -32,10 +30,5 @@ public class TurretBeam extends Process
 	{
 		this.x += (this.speed * delta) * this.directionX;
 		this.y += (this.speed * delta) * this.directionY;
-	}
-	
-	public void reset()
-	{
-		// TODO
 	}
 }
