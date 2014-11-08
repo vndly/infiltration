@@ -8,7 +8,7 @@ public class Resources
 		
 		public static class Protagonist
 		{
-			private static final String ROOT_PROTAGONIST = Images.ROOT_IMAGES + "sprites/";
+			private static final String ROOT_PROTAGONIST = Images.ROOT_IMAGES + "protagonist/";
 			
 			public static final String CHARACTER_IDLE = Protagonist.ROOT_PROTAGONIST + "idle.png";
 			public static final String CHARACTER_JUMPING = Protagonist.ROOT_PROTAGONIST + "jumping.png";
@@ -18,6 +18,7 @@ public class Resources
 			public static final String CHARACTER_RUNNING_3 = Protagonist.ROOT_PROTAGONIST + "running_3.png";
 			public static final String CHARACTER_RUNNING_4 = Protagonist.ROOT_PROTAGONIST + "running_4.png";
 			public static final String CHARACTER_RUNNING_5 = Protagonist.ROOT_PROTAGONIST + "running_5.png";
+			public static final String CHARACTER_RUNNING_6 = Protagonist.ROOT_PROTAGONIST + "running_6.png";
 		}
 		
 		public static class Enemies

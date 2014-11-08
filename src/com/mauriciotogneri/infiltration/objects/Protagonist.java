@@ -44,7 +44,7 @@ public class Protagonist extends Process
 		
 		this.z = 2;
 		
-		this.animationRunning = new Animation(0.06f, Resources.Images.Protagonist.CHARACTER_RUNNING_1, Resources.Images.Protagonist.CHARACTER_RUNNING_2, Resources.Images.Protagonist.CHARACTER_RUNNING_3, Resources.Images.Protagonist.CHARACTER_RUNNING_4, Resources.Images.Protagonist.CHARACTER_RUNNING_5);
+		this.animationRunning = new Animation(0.06f, Resources.Images.Protagonist.CHARACTER_RUNNING_1, Resources.Images.Protagonist.CHARACTER_RUNNING_2, Resources.Images.Protagonist.CHARACTER_RUNNING_3, Resources.Images.Protagonist.CHARACTER_RUNNING_4, Resources.Images.Protagonist.CHARACTER_RUNNING_5, Resources.Images.Protagonist.CHARACTER_RUNNING_6);
 		
 		reset();
 	}
