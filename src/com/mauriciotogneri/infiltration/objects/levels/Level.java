@@ -30,11 +30,11 @@ public class Level
 		this.viewPoint = new ViewPoint((this.building.getWidth() + 1) * Level.BLOCK_SIZE);
 		this.viewPoint.start();
 		
-		this.max = new Protagonist(this, this.building, 21, 6, 1);
+		this.max = new Protagonist(this, this.building, 28, 15, 1);// 21,6 //28,15
 		this.max.start();
 		
-		this.laser1 = new Laser(18, 13, 2, 1000, 1000, true);
-		this.laser2 = new Laser(20, 13, 2, 1000, 1000, true);
+		this.laser1 = new Laser(18, 13, 2, 1000, 1000, false);
+		this.laser2 = new Laser(20, 13, 2, 1000, 1000, false);
 		
 		this.turret = new Turret(5, 4, 1500, Level.BLOCK_SIZE * 8, 1, this.building);
 		this.turret.start();

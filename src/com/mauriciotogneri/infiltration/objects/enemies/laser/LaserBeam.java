@@ -64,6 +64,11 @@ public class LaserBeam extends Process
 	{
 		this.visible = !this.visible;
 		
+		if (this.visible)
+		{
+			playSound(Resources.Audio.Sound.Enemies.LASER_BEAM);
+		}
+		
 		configureAlarm();
 	}
 	

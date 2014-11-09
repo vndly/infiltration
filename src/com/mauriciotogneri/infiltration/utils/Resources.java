@@ -114,6 +114,7 @@ public class Resources
 				private static final String ROOT_ENEMIES = Sound.ROOT_SOUND + "enemies/";
 				
 				public static final String TURRET_BEAM = Enemies.ROOT_ENEMIES + "turret_beam.ogg";
+				public static final String LASER_BEAM = Enemies.ROOT_ENEMIES + "laser_beam.mp3";
 			}
 			
 			public static class Levels
@@ -121,7 +122,7 @@ public class Resources
 				private static final String ROOT_LEVELS = Sound.ROOT_SOUND + "levels/";
 				
 				public static final String DOOR_OPENING = Levels.ROOT_LEVELS + "door_opening.ogg";
-				public static final String SWITCH_ON = Levels.ROOT_LEVELS + "switch_on.ogg";
+				public static final String SWITCH_ON = Levels.ROOT_LEVELS + "switch_on.mp3";
 			}
 		}
 	}
