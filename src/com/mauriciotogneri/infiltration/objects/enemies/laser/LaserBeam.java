@@ -1,5 +1,6 @@
 package com.mauriciotogneri.infiltration.objects.enemies.laser;
 
+import com.mauriciotogneri.infiltration.objects.Level;
 import com.mauriciotogneri.infiltration.utils.Resources;
 import com.misty.kernel.Alarm.OnAlarmRing;
 import com.misty.kernel.Process;
@@ -10,12 +11,12 @@ public class LaserBeam extends Process
 	private final int timeActive;
 	private final int timeInactive;
 	
-	public LaserBeam(float x, float y, int timeActive, int timeInactive, boolean initialVisible)
+	public LaserBeam(int x, int y, int timeActive, int timeInactive, boolean initialVisible)
 	{
 		super(true, true);
 		
-		this.x = x;
-		this.y = y;
+		this.x = Level.BLOCK_SIZE * x;
+		this.y = Level.BLOCK_SIZE * y;
 		this.z = 2;
 		
 		this.timeActive = timeActive;

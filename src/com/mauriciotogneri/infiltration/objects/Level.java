@@ -19,19 +19,19 @@ public class Level
 	
 	public Level()
 	{
-		this.building = new Building(Resources.Levels.LEVEL_1, Resources.Images.Levels.LEVEL_1);
+		this.building = new Building(Resources.Levels.LEVEL_1, Resources.Images.Levels.Buildings.BUILDING_1);
 		this.building.start();
 		
 		this.viewPoint = new ViewPoint((this.building.getWidth() + 1) * Level.BLOCK_SIZE);
 		this.viewPoint.start();
 		
-		this.max = new Protagonist(this, this.building, Level.BLOCK_SIZE * 4, Level.BLOCK_SIZE * 6, 1);
+		this.max = new Protagonist(this, this.building, 28, 15, 1);
 		this.max.start();
 		
-		this.laser1 = new Laser(Level.BLOCK_SIZE * 18, Level.BLOCK_SIZE * 13, 2, 1000, 1000, true);
-		this.laser2 = new Laser(Level.BLOCK_SIZE * 20, Level.BLOCK_SIZE * 13, 2, 1000, 1000, true);
+		this.laser1 = new Laser(18, 13, 2, 1000, 1000, true);
+		this.laser2 = new Laser(20, 13, 2, 1000, 1000, true);
 		
-		this.turret = new Turret(Level.BLOCK_SIZE * 5, Level.BLOCK_SIZE * 4, 1500, Level.BLOCK_SIZE * 8, 1, this.building);
+		this.turret = new Turret(5, 4, 1500, Level.BLOCK_SIZE * 8, 1, this.building);
 		this.turret.start();
 		
 		reset();

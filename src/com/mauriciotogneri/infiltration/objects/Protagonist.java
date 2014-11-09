@@ -31,15 +31,15 @@ public class Protagonist extends Process
 	private static final int GRAVITY = 5 * Protagonist.MAX_FALL_SPEED;
 	private static final int MAX_RUNNING_SPEED = Level.BLOCK_SIZE * 6;
 	
-	public Protagonist(Level level, Building building, float initialX, float initialY, int initialOrientationHorizontal)
+	public Protagonist(Level level, Building building, int initialX, int initialY, int initialOrientationHorizontal)
 	{
 		super(false, true);
 		
 		this.level = level;
 		this.building = building;
 		
-		this.initialX = initialX;
-		this.initialY = initialY;
+		this.initialX = Level.BLOCK_SIZE * initialX;
+		this.initialY = Level.BLOCK_SIZE * initialY;
 		this.initialOrientationHorizontal = initialOrientationHorizontal;
 		
 		this.z = 2;
