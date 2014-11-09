@@ -1,4 +1,4 @@
-package com.mauriciotogneri.infiltration.objects;
+package com.mauriciotogneri.infiltration.objects.levels;
 
 import com.misty.kernel.Process;
 

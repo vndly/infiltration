@@ -4,6 +4,8 @@ import java.util.List;
 import com.mauriciotogneri.infiltration.controls.Input;
 import com.mauriciotogneri.infiltration.objects.enemies.laser.LaserBeam;
 import com.mauriciotogneri.infiltration.objects.enemies.turret.TurretBeam;
+import com.mauriciotogneri.infiltration.objects.levels.Building;
+import com.mauriciotogneri.infiltration.objects.levels.Level;
 import com.mauriciotogneri.infiltration.utils.Resources;
 import com.misty.graphics.Animation;
 import com.misty.kernel.Process;
@@ -42,7 +44,7 @@ public class Protagonist extends Process
 		this.initialY = Level.BLOCK_SIZE * initialY;
 		this.initialOrientationHorizontal = initialOrientationHorizontal;
 		
-		this.z = 2;
+		this.z = 4;
 		
 		this.animationRunning = new Animation(0.06f, Resources.Images.Protagonist.CHARACTER_RUNNING_1, Resources.Images.Protagonist.CHARACTER_RUNNING_2, Resources.Images.Protagonist.CHARACTER_RUNNING_3, Resources.Images.Protagonist.CHARACTER_RUNNING_4, Resources.Images.Protagonist.CHARACTER_RUNNING_5, Resources.Images.Protagonist.CHARACTER_RUNNING_6);
 		

@@ -1,7 +1,8 @@
-package com.mauriciotogneri.infiltration.objects;
+package com.mauriciotogneri.infiltration.objects.levels;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import com.mauriciotogneri.infiltration.objects.Protagonist;
 import com.misty.kernel.Process;
 import com.misty.math.Rectangle;
 import com.misty.utils.Assets;

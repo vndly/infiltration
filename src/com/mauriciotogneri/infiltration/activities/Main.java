@@ -1,7 +1,7 @@
 package com.mauriciotogneri.infiltration.activities;
 
 import com.mauriciotogneri.infiltration.objects.Game;
-import com.mauriciotogneri.infiltration.objects.Level;
+import com.mauriciotogneri.infiltration.objects.levels.Level;
 import com.misty.graphics.ScreenResolution;
 import com.misty.graphics.textures.TextureManager;
 import com.misty.kernel.Misty;

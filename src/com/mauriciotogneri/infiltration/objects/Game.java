@@ -2,6 +2,7 @@ package com.mauriciotogneri.infiltration.objects;
 
 import com.mauriciotogneri.infiltration.controls.Controls;
 import com.mauriciotogneri.infiltration.controls.Input;
+import com.mauriciotogneri.infiltration.objects.levels.Level;
 import com.mauriciotogneri.infiltration.utils.Resources;
 import com.misty.kernel.Process;
 

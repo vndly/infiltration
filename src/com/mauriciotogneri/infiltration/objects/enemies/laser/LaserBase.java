@@ -1,6 +1,6 @@
 package com.mauriciotogneri.infiltration.objects.enemies.laser;
 
-import com.mauriciotogneri.infiltration.objects.Level;
+import com.mauriciotogneri.infiltration.objects.levels.Level;
 import com.mauriciotogneri.infiltration.utils.Resources;
 import com.misty.kernel.Process;
 
