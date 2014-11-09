@@ -6,6 +6,7 @@ import com.mauriciotogneri.infiltration.objects.enemies.laser.LaserBeam;
 import com.mauriciotogneri.infiltration.objects.enemies.turret.TurretBeam;
 import com.mauriciotogneri.infiltration.objects.levels.Building;
 import com.mauriciotogneri.infiltration.objects.levels.Level;
+import com.mauriciotogneri.infiltration.objects.levels.Switch;
 import com.mauriciotogneri.infiltration.utils.Resources;
 import com.misty.graphics.Animation;
 import com.misty.kernel.Process;
@@ -85,6 +86,13 @@ public class Protagonist extends Process
 		if (!list.isEmpty())
 		{
 			this.level.reset();
+		}
+		
+		List<Process> switchs = getCollisions(Switch.class);
+		
+		if (switchs.size() == 1)
+		{
+			this.level.activateSwitch();
 		}
 	}
 	
@@ -207,7 +215,7 @@ public class Protagonist extends Process
 		{
 			if ((!this.jumpingPressed) && (this.velocity.y == 0))
 			{
-				playSound(Resources.Audio.Sound.JUMP);
+				playSound(Resources.Audio.Sound.Protagonist.JUMP);
 				
 				this.jumping = true;
 				this.jumpingPressed = true;

@@ -14,6 +14,7 @@ public class Level
 	
 	private final Door door;
 	private final Switch switchDoor;
+	private boolean doorOpened = false;
 	
 	private final Laser laser1;
 	private final Laser laser2;
@@ -51,6 +52,16 @@ public class Level
 	{
 		this.max.update(delta, input);
 		this.viewPoint.update(this.max);
+	}
+	
+	public void activateSwitch()
+	{
+		if (!this.doorOpened)
+		{
+			this.doorOpened = true;
+			this.switchDoor.activate();
+			this.door.open();
+		}
 	}
 	
 	public void reset()

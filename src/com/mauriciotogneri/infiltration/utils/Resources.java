@@ -102,13 +102,26 @@ public class Resources
 		{
 			private static final String ROOT_SOUND = Audio.ROOT_AUDIO + "sounds/";
 			
-			public static final String JUMP = Sound.ROOT_SOUND + "jump.ogg";
+			public static class Protagonist
+			{
+				private static final String ROOT_PROTAGONIST = Sound.ROOT_SOUND + "protagonist/";
+				
+				public static final String JUMP = Protagonist.ROOT_PROTAGONIST + "jump.ogg";
+			}
 			
 			public static class Enemies
 			{
 				private static final String ROOT_ENEMIES = Sound.ROOT_SOUND + "enemies/";
 				
 				public static final String TURRET_BEAM = Enemies.ROOT_ENEMIES + "turret_beam.ogg";
+			}
+			
+			public static class Levels
+			{
+				private static final String ROOT_LEVELS = Sound.ROOT_SOUND + "levels/";
+				
+				public static final String DOOR_OPENING = Levels.ROOT_LEVELS + "door_opening.ogg";
+				public static final String SWITCH_ON = Levels.ROOT_LEVELS + "switch_on.ogg";
 			}
 		}
 	}

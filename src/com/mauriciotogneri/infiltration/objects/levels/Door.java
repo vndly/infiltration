@@ -17,7 +17,7 @@ public class Door extends Process
 		this.y = Level.BLOCK_SIZE * y;
 		this.z = 3;
 		
-		this.animationOpening = new Animation(0.1f, Resources.Images.Levels.Door.DOOR_OPENING_1, Resources.Images.Levels.Door.DOOR_OPENING_2, Resources.Images.Levels.Door.DOOR_OPENING_3);
+		this.animationOpening = new Animation(false, 0.1f, Resources.Images.Levels.Door.DOOR_OPENING_1, Resources.Images.Levels.Door.DOOR_OPENING_2, Resources.Images.Levels.Door.DOOR_OPENING_3);
 		
 		setImage(Resources.Images.Levels.Door.DOOR_CLOSED);
 	}
@@ -25,6 +25,8 @@ public class Door extends Process
 	public void open()
 	{
 		this.opened = true;
+		
+		playSound(Resources.Audio.Sound.Levels.DOOR_OPENING);
 	}
 	
 	@Override

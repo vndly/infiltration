@@ -7,7 +7,7 @@ public class Switch extends Process
 {
 	public Switch(int x, int y)
 	{
-		super(false, false);
+		super(false, true);
 		
 		this.x = Level.BLOCK_SIZE * x;
 		this.y = Level.BLOCK_SIZE * y;
@@ -19,5 +19,6 @@ public class Switch extends Process
 	public void activate()
 	{
 		setImage(Resources.Images.Levels.Switch.SWITCH_ON);
+		playSound(Resources.Audio.Sound.Levels.SWITCH_ON);
 	}
 }
