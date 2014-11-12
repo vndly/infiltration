@@ -3,7 +3,6 @@ package com.mauriciotogneri.infiltration.activities;
 import com.mauriciotogneri.infiltration.objects.Game;
 import com.mauriciotogneri.infiltration.objects.levels.Level;
 import com.misty.graphics.ScreenResolution;
-import com.misty.graphics.textures.TextureManager;
 import com.misty.kernel.Misty;
 
 public class Main extends Misty
@@ -17,8 +16,6 @@ public class Main extends Misty
 	@Override
 	public void start()
 	{
-		TextureManager.loadTexture("images/enemies/turret/turret_beam.png");
-		
 		this.game = new Game();
 		this.game.start();
 	}
