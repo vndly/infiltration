@@ -15,7 +15,7 @@ public class Game extends Process
 	{
 		super(true, false);
 		
-		this.controls = new Controls();
+		this.controls = new Controls(getResolutionX());
 		this.currentLevel = new Level();
 		
 		playMusic(Resources.Audio.Music.MUSIC);

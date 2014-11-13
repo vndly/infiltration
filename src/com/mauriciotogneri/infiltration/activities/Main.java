@@ -7,9 +7,9 @@ import com.misty.kernel.Misty;
 
 public class Main extends Misty
 {
-	public static final int RESOLUTION_X = 17 * Level.BLOCK_SIZE;
+	// public static final int RESOLUTION_ = 17 * Level.BLOCK_SIZE;
 	
-	// public static int RESOLUTION_Y = 10 * Building.BLOCK_SIZE;
+	private static int RESOLUTION_Y = 10 * Level.BLOCK_SIZE;
 	
 	private Game game;
 	
@@ -23,6 +23,6 @@ public class Main extends Misty
 	@Override
 	public ScreenResolution getResolution()
 	{
-		return ScreenResolution.fromHorizontal(Main.RESOLUTION_X);
+		return ScreenResolution.fromVertical(Main.RESOLUTION_Y);
 	}
 }

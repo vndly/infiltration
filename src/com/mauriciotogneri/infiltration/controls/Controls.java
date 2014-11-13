@@ -1,6 +1,5 @@
 package com.mauriciotogneri.infiltration.controls;
 
-import com.mauriciotogneri.infiltration.activities.Main;
 import com.mauriciotogneri.infiltration.utils.Resources;
 
 public class Controls
@@ -11,7 +10,7 @@ public class Controls
 	
 	private final Input input = new Input();
 	
-	public Controls()
+	public Controls(int resolutionX)
 	{
 		this.buttonLeft = new Button(10, 10, 90, Resources.Images.Controls.ARROW);
 		this.buttonLeft.start();
@@ -19,7 +18,7 @@ public class Controls
 		this.buttonRight = new Button(this.buttonLeft.x + Button.SIZE + 30, 10, -90, Resources.Images.Controls.ARROW);
 		this.buttonRight.start();
 		
-		this.buttonUp = new Button(Main.RESOLUTION_X - Button.SIZE - 10, 10, 0, Resources.Images.Controls.ARROW);
+		this.buttonUp = new Button(resolutionX - Button.SIZE - 10, 10, 0, Resources.Images.Controls.ARROW);
 		this.buttonUp.start();
 	}
 	
